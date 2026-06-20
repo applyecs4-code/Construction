@@ -1,85 +1,668 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>constructionscert UK - Professional CSCS Card Services</title>
-    <meta name="description" content="UK CSCS Card application service. Get your Construction Skills Certification Scheme card quickly and easily. Book CITB tests, mock exams, and certification.">
-    <link rel="stylesheet" href="header.css" >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header Only - CSCS Card</title>
+    <!-- Fonts & Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================ */
+        /* RESET & BASE */
+        /* ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+        
+        /* Demo spacer to show header fixed behavior */
+        .demo-spacer {
+            height: 120vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            background: #f8fafc;
+            border-radius: 16px;
+            margin-top: 100px;
+            padding: 40px;
+            border: 2px dashed #cbd5e1;
+        }
+
+        /* ============================================================ */
+        /* HEADER - FULLY RESPONSIVE */
+        /* ============================================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 9999;
+            border-bottom: 3px solid #005eb8;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled {
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1440px;
+            margin: 0 auto;
+            height: 80px;
+            transition: height 0.3s ease;
+        }
+        
+        .header.scrolled .navbar {
+            height: 70px;
+        }
+        
+        @media (max-width: 992px) {
+            .navbar { height: 70px; }
+            .header.scrolled .navbar { height: 62px; }
+        }
+        @media (max-width: 768px) {
+            .navbar { height: 62px; padding: 0 14px; }
+            .header.scrolled .navbar { height: 56px; }
+        }
+        @media (max-width: 480px) {
+            .navbar { height: 56px; padding: 0 10px; }
+            .header.scrolled .navbar { height: 52px; }
+        }
+        
+        /* --- Logo --- */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        
+        .logo img {
+            height: 55px;
+            width: auto;
+            transition: height 0.3s ease;
+        }
+        
+        .header.scrolled .logo img {
+            height: 45px;
+        }
+        
+        @media (max-width: 768px) {
+            .logo img { height: 42px; }
+            .header.scrolled .logo img { height: 36px; }
+        }
+        @media (max-width: 480px) {
+            .logo img { height: 36px; }
+            .header.scrolled .logo img { height: 32px; }
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #002B4A;
+            letter-spacing: -0.3px;
+            margin: 0;
+        }
+        
+        .logo-text span {
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: #005eb8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-text h1 { font-size: 0.95rem; }
+            .logo-text span { font-size: 0.45rem; }
+        }
+        @media (max-width: 480px) {
+            .logo-text h1 { font-size: 0.8rem; }
+            .logo-text span { font-size: 0.4rem; }
+        }
+        
+        /* --- Hamburger --- */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 44px;
+            height: 44px;
+            padding: 8px;
+            background: #f0f4f8;
+            border: 1px solid #dce4ec;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 99999;
+            flex-shrink: 0;
+        }
+        
+        .hamburger:hover {
+            background: #e3eaf2;
+            border-color: #b8c9dd;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: #005eb8;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        @media (max-width: 992px) {
+            .hamburger { display: flex; }
+        }
+        @media (max-width: 768px) {
+            .hamburger { width: 40px; height: 40px; padding: 6px 8px; }
+            .hamburger span { width: 22px; height: 2.5px; }
+        }
+        @media (max-width: 480px) {
+            .hamburger { width: 36px; height: 36px; padding: 5px 6px; gap: 4px; }
+            .hamburger span { width: 18px; height: 2px; }
+        }
+        
+        /* --- Navigation Menu --- */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-menu > li {
+            position: relative;
+            list-style: none;
+        }
+        
+        .nav-menu > li > a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1a2f3f;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .nav-menu > li > a i {
+            font-size: 0.85rem;
+            color: #005eb8;
+        }
+        
+        .nav-menu > li > a:hover {
+            background: #eef3fc;
+            color: #005eb8;
+        }
+        
+        .nav-menu > li > a.active {
+            background: #eef3fc;
+            color: #005eb8;
+            font-weight: 700;
+        }
+        
+        /* --- Desktop Dropdown --- */
+        @media (min-width: 993px) {
+            .has-dropdown .dropdown,
+            .course-dropdown .course-menu {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%) translateY(8px);
+                min-width: 280px;
+                background: #ffffff;
+                border-radius: 16px;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+                padding: 8px 0;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.25s ease;
+                z-index: 9999;
+                border: 1px solid rgba(0, 94, 184, 0.08);
+            }
+            
+            .has-dropdown:hover .dropdown,
+            .course-dropdown:hover .course-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-50%) translateY(0);
+            }
+            
+            .dropdown a,
+            .course-menu a {
+                padding: 8px 20px;
+                font-size: 0.82rem;
+                font-weight: 500;
+                color: #1f3b4c;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                transition: all 0.2s;
+            }
+            
+            .dropdown a i,
+            .course-menu a i {
+                width: 24px;
+            }
+            
+            .dropdown a:hover,
+            .course-menu a:hover {
+                background: #f0f7ff;
+                padding-left: 26px;
+                color: #005eb8;
+            }
+            
+            .dropdown-header {
+                font-size: 0.6rem;
+                text-transform: uppercase;
+                letter-spacing: 0.8px;
+                font-weight: 800;
+                padding: 8px 20px 4px;
+                color: #005eb8;
+                border-bottom: 2px solid #005eb8;
+                margin: 0 12px 6px;
+            }
+            
+            .dropdown-header:last-of-type {
+                border-bottom: 2px solid #10b981;
+                border-top: 2px solid #e9ecef;
+                margin-top: 6px;
+                padding-top: 8px;
+                color: #10b981;
+            }
+        }
+        
+        /* --- Mobile Menu --- */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 380px;
+                height: 100vh;
+                background: #ffffff;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 80px 20px 30px;
+                gap: 2px;
+                transition: right 0.35s cubic-bezier(0.2, 0.9, 0.4, 1);
+                z-index: 99998;
+                overflow-y: auto;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active { right: 0; }
+            
+            .nav-menu > li > a {
+                padding: 12px 16px;
+                font-size: 1rem;
+                border-radius: 12px;
+                white-space: normal;
+                justify-content: flex-start;
+            }
+            
+            /* Mobile Dropdown */
+            .has-dropdown .dropdown,
+            .course-dropdown .course-menu {
+                position: static;
+                width: 100%;
+                display: none;
+                background: #f5f8fc;
+                border-radius: 12px;
+                padding: 6px 0;
+                margin-top: 2px;
+                box-shadow: none;
+                border: none;
+            }
+            
+            .has-dropdown.active .dropdown,
+            .course-dropdown.active .course-menu {
+                display: block;
+            }
+            
+            .mobile-dropdown-arrow {
+                margin-left: auto;
+                transition: transform 0.3s;
+                font-size: 0.7rem;
+            }
+            
+            .has-dropdown.active .mobile-dropdown-arrow,
+            .course-dropdown.active .mobile-dropdown-arrow {
+                transform: rotate(180deg);
+            }
+            
+            .dropdown a,
+            .course-menu a {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .dropdown-header {
+                padding: 8px 18px 4px;
+                font-size: 0.55rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-menu {
+                padding: 70px 16px 20px;
+                max-width: 320px;
+            }
+            .nav-menu > li > a {
+                padding: 10px 14px;
+                font-size: 0.92rem;
+            }
+            .dropdown a,
+            .course-menu a {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* --- Mobile Overlay --- */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 9997;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Course menu specific styles */
+        .course-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .course-menu a span {
+            flex: 1;
+        }
+        .course-menu a i.fa-arrow-right {
+            width: auto !important;
+            color: #005eb8;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Section -->
+
+<!-- ============================================================ -->
+<!-- HEADER - WITH ALL YOUR MENU ITEMS -->
+<!-- ============================================================ -->
 <header class="header" id="mainHeader">
-  <nav class="navbar" aria-label="Main navigation">
-    <div class="logo-container">
-      <a href="index.html" class="logo" aria-label="constructionscert UK Home">
-        <img src="https://constructionscert.co.uk/img/logo10.png" alt="constructionscert UK Logo">
-        <div class="logo-text">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <!-- Logo -->
+        <a href="index.html" class="logo" aria-label="Constructions Cert Home">
+            <img src="https://constructionscert.co.uk/img/logo10.png" alt="Constructions Cert Logo" width="55" height="55" loading="lazy" />
+            <div class="logo-text">
+                <h1>Constructions Cert</h1>
+                <span>UK Construction Cards</span>
+            </div>
+        </a>
+
+        <!-- Hamburger (mobile) -->
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-      </a>
-    </div>
 
-    <div class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <ul class="nav-menu" id="navMenu">
-      <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-      <li><a href="book.html"><i class="fas fa-calendar-check"></i>Book Test</a></li>
-      
-                <li class="has-dropdown">
-                    <a href="cscs-cards.html"><i class="fas fa-id-card"></i>CSCS Cards <i class="fas fa-chevron-down mobile-dropdown-arrow"></i></a>
-                    <div class="dropdown">
-                        <div class="dropdown-header" style="padding: 12px 24px; font-weight: 600; color: #005ea5; border-bottom: 2px solid #005ea5; margin-bottom: 8px;">
-                            <i class="fas fa-hard-hat"></i> Construction Cards
-                        </div>
-                        <a href="cscs-red-trainee-card.html"><i class="fas fa-id-card" style="color: #dc3545"></i>RED Trainee Card</a>
-                        <a href="cscs-red-apprentice-card.html"><i class="fas fa-id-card" style="color: #dc3545"></i>RED Apprentice Card</a>
-                        <a href="cscs-red-experienced-worker-card.html"><i class="fas fa-id-card" style="color: #dc3545"></i>RED Experienced Worker</a>
-                        <a href="cscs-blue-skilled-worker-card.html"><i class="fas fa-id-card" style="color: #0d6efd"></i>BLUE Skilled Worker</a>
-                        <a href="cscs-green-labourer-card.html"><i class="fas fa-id-card" style="color: #198754"></i>GREEN Labourer Card</a>
-                        <a href="cscs-gold-supervisor-card.html"><i class="fas fa-id-card" style="color: #ffc107"></i>GOLD Supervisor Card</a>
-                        <a href="cscs-gold-advanced-craft-card.html"><i class="fas fa-id-card" style="color: #ffc107"></i>GOLD Advanced Craft</a>
-                        <a href="cscs-black-manager-card.html"><i class="fas fa-id-card" style="color: #212529"></i>BLACK Manager Card</a>
-                        <a href="cscs-white-pqp-card.html"><i class="fas fa-id-card" style="color: #6c757d"></i>WHITE PQP Card</a>
-                        <a href="cscs-white-aqp-card.html"><i class="fas fa-id-card" style="color: #6c757d"></i>WHITE AQP Card</a>
-                        <a href="cscs-red-provisional-card.html"><i class="fas fa-id-card" style="color: #dc3545"></i>RED Provisional Card</a>
-                        <a href="cscs-industry-placement-card.html"><i class="fas fa-id-card" style="color: #6f42c1"></i>Industry Placement</a>
-                        <a href="cscs-red-experienced-tsm-card.html"><i class="fas fa-id-card" style="color: #dc3545"></i>RED TSM Card</a>
-                        <div class="dropdown-header" style="padding: 12px 24px; font-weight: 600; color: #20c997; border-top: 2px solid #e9ecef; margin-top: 8px; border-bottom: 2px solid #20c997;">
-                            <i class="fas fa-newspaper"></i> Resources
-                        </div>
-                        <a href="https://constructionscert.co.uk/blog"><i class="fas fa-blog" style="color: #20c997"></i>CSCS Blog & Updates</a>
+        <!-- Navigation Menu -->
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="book.html"><i class="fas fa-calendar-check"></i>Book Test</a></li>
+            
+            <!-- CSCS Cards Dropdown -->
+            <li class="has-dropdown">
+                <a href="cscs-cards.html"><i class="fas fa-id-card"></i>CSCS Cards <i class="fas fa-chevron-down mobile-dropdown-arrow"></i></a>
+                <div class="dropdown">
+                    <div class="dropdown-header" style="padding: 12px 24px; font-weight: 600; color: #005ea5; border-bottom: 2px solid #005ea5; margin-bottom: 8px;">
+                        <i class="fas fa-hard-hat"></i> Construction Cards
                     </div>
-                </li>
-                
-                <!-- CSCS Mock Tests Dropdown -->
-                <li class="has-dropdown">
-                    <a href="cscs-mock-test-free.html"><i class="fas fa-file-alt"></i>Free Mock Tests <i class="fas fa-chevron-down mobile-dropdown-arrow"></i></a>
-                    <div class="dropdown">
-                        <a href="cscs-operatives-mock-test.html"><i class="fas fa-hard-hat"></i>Operatives Test</a>
-                        <a href="cscs-specialist-mock-test.html"><i class="fas fa-tools"></i>Specialist Test</a>
-                        <a href="cscs-map-mock-test.html"><i class="fas fa-user-tie"></i>Manager Test</a>
+                    <a href="cscs-red-trainee-card.html"><i class="fas fa-id-card" style="color: #dc3545"></i>RED Trainee Card</a>
+                    <a href="cscs-red-apprentice-card.html"><i class="fas fa-id-card" style="color: #dc3545"></i>RED Apprentice Card</a>
+                    <a href="cscs-red-experienced-worker-card.html"><i class="fas fa-id-card" style="color: #dc3545"></i>RED Experienced Worker</a>
+                    <a href="cscs-blue-skilled-worker-card.html"><i class="fas fa-id-card" style="color: #0d6efd"></i>BLUE Skilled Worker</a>
+                    <a href="cscs-green-labourer-card.html"><i class="fas fa-id-card" style="color: #198754"></i>GREEN Labourer Card</a>
+                    <a href="cscs-gold-supervisor-card.html"><i class="fas fa-id-card" style="color: #ffc107"></i>GOLD Supervisor Card</a>
+                    <a href="cscs-gold-advanced-craft-card.html"><i class="fas fa-id-card" style="color: #ffc107"></i>GOLD Advanced Craft</a>
+                    <a href="cscs-black-manager-card.html"><i class="fas fa-id-card" style="color: #212529"></i>BLACK Manager Card</a>
+                    <a href="cscs-white-pqp-card.html"><i class="fas fa-id-card" style="color: #6c757d"></i>WHITE PQP Card</a>
+                    <a href="cscs-white-aqp-card.html"><i class="fas fa-id-card" style="color: #6c757d"></i>WHITE AQP Card</a>
+                    <a href="cscs-red-provisional-card.html"><i class="fas fa-id-card" style="color: #dc3545"></i>RED Provisional Card</a>
+                    <a href="cscs-industry-placement-card.html"><i class="fas fa-id-card" style="color: #6f42c1"></i>Industry Placement</a>
+                    <a href="cscs-red-experienced-tsm-card.html"><i class="fas fa-id-card" style="color: #dc3545"></i>RED TSM Card</a>
+                    <div class="dropdown-header" style="padding: 12px 24px; font-weight: 600; color: #20c997; border-top: 2px solid #e9ecef; margin-top: 8px; border-bottom: 2px solid #20c997;">
+                        <i class="fas fa-newspaper"></i> Resources
                     </div>
-                </li>
-                      <li><a href="revision-training-courses.html"><i class="fas fa-users"></i>Revision Book</a></li>
-
-                <li><a href="test-centres.html"><i class="fas fa-map-marker-alt"></i>Test Centres</a></li>
-                <li><a href="contact.html"><i class="fas fa-phone-alt"></i>Contact</a></li>
-      
-      <li class="course-dropdown">
-        <a href="#"><i class="fas fa-graduation-cap"></i>BOOK COURSE <i class="fas fa-chevron-down mobile-dropdown-arrow"></i></a>
-        <ul class="dropdown">
-          <li><a href="book-green-card-course.html"><span>Health, Safety & Awareness Course</span><i class="fas fa-arrow-right"></i></a></li>
-          <li><a href="book-eusr-nwh-blue-card-professional.html"><span>EUSR NWH Blue Virtual Card</span><i class="fas fa-arrow-right"></i></a></li>
-          <li><a href="book-course.html"><span>NVQ Courses</span><i class="fas fa-arrow-right"></i></a></li>
+                    <a href="https://constructionscert.co.uk/blog"><i class="fas fa-blog" style="color: #20c997"></i>CSCS Blog & Updates</a>
+                </div>
+            </li>
+            
+            <!-- CSCS Mock Tests Dropdown -->
+            <li class="has-dropdown">
+                <a href="cscs-mock-test-free.html"><i class="fas fa-file-alt"></i>Free Mock Tests <i class="fas fa-chevron-down mobile-dropdown-arrow"></i></a>
+                <div class="dropdown">
+                    <a href="cscs-operatives-mock-test.html"><i class="fas fa-hard-hat"></i>Operatives Test</a>
+                    <a href="cscs-specialist-mock-test.html"><i class="fas fa-tools"></i>Specialist Test</a>
+                    <a href="cscs-map-mock-test.html"><i class="fas fa-user-tie"></i>Manager Test</a>
+                </div>
+            </li>
+            
+            <li><a href="groupbooking.html"><i class="fas fa-users"></i>Revision</a></li>
+            <li><a href="test-centres.html"><i class="fas fa-map-marker-alt"></i>Test Centres</a></li>
+            <li><a href="contact.html"><i class="fas fa-phone-alt"></i>Contact</a></li>
+            
+            <!-- Course Dropdown -->
+            <li class="course-dropdown">
+                <a href="#"><i class="fas fa-graduation-cap"></i>BOOK COURSE <i class="fas fa-chevron-down mobile-dropdown-arrow"></i></a>
+                <ul class="course-menu">
+                    <li><a href="book-green-card-course.html"><span>Health, Safety & Awareness Course</span><i class="fas fa-arrow-right"></i></a></li>
+                    <li><a href="book-eusr-nwh-blue-card-professional.html"><span>EUSR NWH Blue Virtual Card</span><i class="fas fa-arrow-right"></i></a></li>
+                    <li><a href="book-course.html"><span>NVQ Courses</span><i class="fas fa-arrow-right"></i></a></li>
+                </ul>
+            </li>
         </ul>
-      </li>
-    </ul>
-  </nav>
+    </nav>
 </header>
 
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- ============================================================ -->
+<!-- DEMO CONTENT - TO SHOW HEADER BEHAVIOR -->
+<!-- ============================================================ -->
+<div class="demo-spacer">
+    <div style="text-align:center;">
+        <i class="fas fa-arrow-up" style="font-size:2rem; color:#005eb8; display:block; margin-bottom:16px;"></i>
+        <p style="font-weight:600; color:#1a2f3f;">Header Only — Scroll to see shrink effect</p>
+        <p style="font-size:0.9rem; color:#64748b; margin-top:8px;">The header is fully responsive with dropdowns and mobile menu.</p>
+        <p style="font-size:0.85rem; color:#94a3b8; margin-top:12px;">
+            <i class="fas fa-mobile-alt"></i> Resize your browser to test mobile view
+        </p>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCRIPTS -->
+<!-- ============================================================ -->
+<script>
+    (function() {
+        'use strict';
+        
+        const header = document.getElementById('mainHeader');
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        const body = document.body;
+        
+        // --- Scroll effect ---
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 25) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // --- Toggle menu ---
+        function openMenu() {
+            navMenu.classList.add('active');
+            hamburger.classList.add('active');
+            overlay.classList.add('active');
+            body.style.overflow = 'hidden';
+            hamburger.setAttribute('aria-expanded', 'true');
+        }
+        
+        function closeMenu() {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            overlay.classList.remove('active');
+            body.style.overflow = '';
+            hamburger.setAttribute('aria-expanded', 'false');
+            // Close all dropdowns
+            document.querySelectorAll('.has-dropdown, .course-dropdown').forEach(function(el) {
+                el.classList.remove('active');
+            });
+        }
+        
+        function toggleMenu() {
+            if (navMenu.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+        
+        // --- Hamburger click ---
+        if (hamburger) {
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            // Keyboard support
+            hamburger.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleMenu();
+                }
+            });
+        }
+        
+        // --- Overlay click ---
+        if (overlay) {
+            overlay.addEventListener('click', closeMenu);
+        }
+        
+        // --- Mobile dropdown toggle ---
+        document.querySelectorAll('.has-dropdown > a, .course-dropdown > a').forEach(function(toggle) {
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    var parent = this.closest('.has-dropdown, .course-dropdown');
+                    if (parent) {
+                        var isActive = parent.classList.contains('active');
+                        document.querySelectorAll('.has-dropdown, .course-dropdown').forEach(function(el) {
+                            el.classList.remove('active');
+                        });
+                        if (!isActive) {
+                            parent.classList.add('active');
+                        }
+                    }
+                }
+            });
+        });
+        
+        // --- Close menu on link click (mobile) ---
+        document.querySelectorAll('.nav-menu a:not(.has-dropdown > a):not(.course-dropdown > a)').forEach(function(link) {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 992) {
+                    setTimeout(closeMenu, 150);
+                }
+            });
+        });
+        
+        // --- Close menu on resize ---
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 992) {
+                closeMenu();
+            }
+        });
+        
+        // --- Close menu on Escape key ---
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+        
+        console.log('✅ Header loaded successfully!');
+    })();
+</script>
+
 </body>
-</html>        
+</html>
