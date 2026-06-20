@@ -63,15 +63,8 @@
 </head>
 <body>
   <!-- dynamic header (external) – no hardcoded brand bar -->
-<div id="header-container"></div>
-
-<script>
-fetch('header1.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('header-container').innerHTML = html;
-  });
-</script>
+  <div id="header-container"></div>
+  <script src="header.js"></script>
 
   <!-- Hero Section -->
   <section class="hero-section">
