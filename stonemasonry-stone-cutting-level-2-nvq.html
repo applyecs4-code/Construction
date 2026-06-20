@@ -29,16 +29,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Dynamic header (external) -->
-<div id="header-container"></div>
-
-<script>
-fetch('header1.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('header-container').innerHTML = html;
-  });
-</script>
+  <div id="header-container"></div>
+  <script src="header.js"></script>
 
   <!-- HERO SECTION -->
   <section class="hero-section">
