@@ -13,22 +13,90 @@
     <meta property="og:site_name" content="ConstructionsCert">
     <link rel="canonical" href="https://constructionscert.co.uk/book-cscs-green-card">
 
-    <!-- ✅ Font Awesome & Google Fonts (REQUIRED for header icons) -->
+    <!-- Font Awesome & Google Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-    <!-- Main styles -->
-
     <!-- AddressNow -->
     <link rel="stylesheet" href="https://api.addressnow.co.uk/css/addressnow-2.20.min.css?key=gm26-ce18-kr99-hj91" />
-
-    <!-- ✅ common.js — loads header.html + footer.html + all menu logic -->
 
     <style>
         * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
         body { background: #f9fbfa; margin: 0; padding: 0; }
 
-        /* ✅ Push content below fixed header */
+        /* --- fixed header --- */
+        .site-header {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 12px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            border-bottom: 1px solid #eef2f0;
+        }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo a {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: #0B5E42;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .logo a span { color: #1e7e5a; }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 500;
+        }
+        .nav-links a {
+            color: #1e293b;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+        .nav-links a:hover { color: #0B5E42; }
+        .nav-links .cta-nav {
+            background: #0B5E42;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+        .nav-links .cta-nav:hover { background: #1e7e5a; color: white; }
+        .hamburger {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #0B5E42;
+            background: none;
+            border: none;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                padding: 20px 0 10px;
+                gap: 16px;
+                border-top: 1px solid #e2e8f0;
+                margin-top: 12px;
+            }
+            .nav-links.open { display: flex; }
+            .hamburger { display: block; }
+            .header-inner { flex-wrap: wrap; }
+        }
+
+        /* --- page wrapper --- */
         .page-wrapper { padding-top: 100px; }
 
         .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
@@ -61,13 +129,28 @@
             .page-wrapper { padding-top: 70px; }
         }
     </style>
-  <div id="header-container"></div>
-  <script src="header.js"></script>
 </head>
 <body>
 
-    <!-- ✅ Header injected here by common.js -->
-    <!-- ✅ Page content pushed below fixed header -->
+    <!-- ===== HEADER (fixed) ===== -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="#">Constructions<span>Cert</span></a>
+            </div>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="#">Home</a>
+                <a href="#">Courses</a>
+                <a href="#">About</a>
+                <a href="#" class="cta-nav">Enquire now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== PAGE CONTENT ===== -->
     <div class="page-wrapper">
         <div class="container">
             <div class="booking-form">
@@ -180,6 +263,13 @@
         <i class="fas fa-bolt"></i> Enquire now
     </a>
 
+    <!-- Footer -->
+    <footer class="footer-note">
+        <div class="container" style="text-align:center;">
+            <p>&copy; 2025 ConstructionsCert. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Contact</a></p>
+        </div>
+    </footer>
 
     <!-- AddressNow -->
     <script src="https://api.addressnow.co.uk/js/addressnow-2.20.min.js?key=gm26-ce18-kr99-hj91"></script>
@@ -192,9 +282,26 @@
         }
     </script>
 
-    <!-- Form logic -->
+    <!-- Form logic + hamburger -->
     <script>
         (function () {
+            // ----- hamburger toggle -----
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navLinks = document.getElementById('navLinks');
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('open');
+                });
+                // close on outside click
+                document.addEventListener('click', function(e) {
+                    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                        navLinks.classList.remove('open');
+                    }
+                });
+            }
+
+            // ----- form logic -----
             const fixedCourseName = "CSCS Green Card Level 1 (Award in Health & Safety)";
 
             const form         = document.getElementById('cscsForm');
@@ -210,7 +317,6 @@
             const summaryBox   = document.getElementById('liveSummary');
             const citbRadios   = document.querySelectorAll('input[name="citb_test_completed"]');
 
-            // ---- Email validation ----
             function validateEmails() {
                 const match = !emailField.value || !confirmEmail.value || emailField.value === confirmEmail.value;
                 emailField.style.borderColor    = match ? '' : '#dc3545';
@@ -218,7 +324,6 @@
                 return match;
             }
 
-            // ---- Postcode validation ----
             function validatePostcode() {
                 const pc = postcodeField.value.trim();
                 const valid = !pc || /^[A-Z]{1,2}[0-9][A-Z0-9]? ?[0-9][A-Z]{2}$/i.test(pc);
@@ -226,7 +331,6 @@
                 return valid;
             }
 
-            // ---- Live summary ----
             function updateSummary() {
                 let citb = '';
                 citbRadios.forEach(r => { if (r.checked) citb = r.value; });
@@ -240,13 +344,11 @@
                 `;
             }
 
-            // ---- Listeners ----
             form.querySelectorAll('input, select').forEach(el => {
                 el.addEventListener('input', () => { validateEmails(); validatePostcode(); updateSummary(); });
             });
             citbRadios.forEach(r => r.addEventListener('change', updateSummary));
 
-            // ---- Manual address trigger ----
             document.getElementById('manualAddressTrigger').addEventListener('click', function (e) {
                 e.preventDefault();
                 addrLine1.value = '';
@@ -257,7 +359,6 @@
                 updateSummary();
             });
 
-            // ---- Submit validation ----
             form.addEventListener('submit', function (e) {
                 let valid = true;
 
