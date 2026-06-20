@@ -19,8 +19,6 @@
 
     <!-- AddressNow -->
     <link rel="stylesheet" href="https://api.addressnow.co.uk/css/addressnow-2.20.min.css?key=gm26-ce18-kr99-hj91" />
-  <div id="header-container"></div>
-  <script src="header.js"></script>
 
     <style>
         * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
@@ -133,8 +131,25 @@
     </style>
 </head>
 <body>
-  <div id="header-container"></div>
-  <script src="header.js"></script>
+
+    <!-- ===== HEADER (fixed) ===== -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="index.html">Constructions<span>Cert</span></a>
+            </div>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="cardbooking.html">Card Book</a>
+                <a href="book.html">Test Book</a>
+                <a href="contact.html" class="cta-nav">Enquire now</a>
+            </nav>
+        </div>
+    </header>
+
     <!-- ===== PAGE CONTENT ===== -->
     <div class="page-wrapper">
         <div class="container">
