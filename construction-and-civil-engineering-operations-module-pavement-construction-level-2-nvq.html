@@ -24,15 +24,8 @@
 </head>
 <body>
   <!-- placeholder for dynamic header (external) – exactly as first version -->
-<div id="header-container"></div>
-
-<script>
-fetch('header1.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('header-container').innerHTML = html;
-  });
-</script>
+  <div id="header-container"></div>
+  <script src="header.js"></script>
 
   <!-- Hero Section (no static header, no brand bar) -->
   <section class="hero-section">
