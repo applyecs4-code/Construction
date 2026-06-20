@@ -25,14 +25,7 @@
 <body>
   <!-- placeholder for dynamic header (external) -->
   <div id="header-container"></div>
-
-<script>
-fetch('header1.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('header-container').innerHTML = html;
-  });
-</script>
+  <script src="header.js"></script>
 
   <!-- Hero Section -->
   <section class="hero-section">
