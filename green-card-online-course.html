@@ -137,15 +137,8 @@
   </style>
 </head>
 <body>
-<div id="header-container"></div>
-
-<script>
-fetch('header1.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('header-container').innerHTML = html;
-  });
-</script>
+  <div id="header-container"></div>
+  <script src="header.js"></script>
 
 <!-- HERO SECTION (no header, just hero) -->
 <div class="hero-section">
