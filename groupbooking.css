@@ -1,0 +1,94 @@
+.group-card-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+  background: linear-gradient(to right, #f8fbff, #e8f1ff); /* Soft white-blue background */
+}
+
+.group-card {
+  background: #ffffff;
+  padding: 40px 45px;
+  border-radius: 18px;
+  max-width: 700px;
+  width: 100%;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0, 64, 128, 0.15); /* Blue tinted shadow */
+  border: 1px solid #dbeafe; /* subtle light blue border */
+  animation: fadeIn 0.8s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.group-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 64, 128, 0.25);
+}
+
+.group-card h2 {
+  color: #1d4ed8; /* Bright blue */
+  margin-bottom: 18px;
+  font-size: 24px;
+  font-weight: 700;
+  border-bottom: 2px solid #e0e7ff;
+  padding-bottom: 6px;
+}
+
+.group-card p {
+  font-size: 15px;
+  color: #374151; /* Dark gray for readability */
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.group-card .form-group {
+  margin-bottom: 22px;
+}
+
+.group-card .form-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  color: #1e3a8a; /* Navy blue */
+  font-size: 14px;
+}
+
+.group-card select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 15px;
+  background: #f9fafb;
+  color: #111827;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.group-card select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+  outline: none;
+}
+
+/* 🎯 CTA Button */
+.group-btn {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 64, 128, 0.2);
+}
+
+.group-btn:hover {
+  background: linear-gradient(135deg, #153eaa, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 64, 128, 0.3);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

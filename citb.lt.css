@@ -1,0 +1,46 @@
+section {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+.labourer-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.labourer-section h1,
+.labourer-section h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.labourer-section p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.labourer-section ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.labourer-section ul li {
+  margin-bottom: 8px;
+}
+
+.labourer-section a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.labourer-section a:hover {
+  text-decoration: underline;
+}

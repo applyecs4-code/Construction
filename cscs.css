@@ -1,0 +1,106 @@
+/* ==== Cards Container ==== */
+.card-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* ==== Card Block ==== */
+.card-block {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.9); /* Glass effect */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 18px;
+  padding: 35px;
+  text-align: center;
+  color: #222;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+/* ✅ Staggered animation delay */
+.card-block:nth-child(1) { animation-delay: 0.2s; }
+.card-block:nth-child(2) { animation-delay: 0.4s; }
+.card-block:nth-child(3) { animation-delay: 0.6s; }
+.card-block:nth-child(4) { animation-delay: 0.8s; }
+
+/* Hover Effect */
+.card-block:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ==== Icon ==== */
+.card-icon {
+  display: block;              /* Image ko block banane ke liye */
+  margin: 0 auto 20px auto;    /* Horizontally center */
+  width: 90px;
+  height: auto;
+  border-radius: 12px;
+  animation: pulse 3s infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transition: transform 0.4s ease;
+}
+
+.card-block:hover .card-icon {
+  transform: rotate(8deg) scale(1.1);
+}
+
+/* ==== Headings & Text ==== */
+.card-block h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: #1e2a78;
+  animation: fadeInUp 1s ease;
+}
+.card-block p {
+  font-size: 15px;
+  margin-bottom: 22px;
+  color: #444;
+  line-height: 1.6;
+  animation: fadeInUp 1.2s ease;
+}
+
+/* ==== Button ==== */
+.book-btn {
+  background: linear-gradient(135deg, #3f51b5, #5a55ae);
+  color: #fff;
+  padding: 12px 28px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(63, 81, 181, 0.3);
+}
+.book-btn:hover {
+  background: linear-gradient(135deg, #283593, #3f51b5);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(63, 81, 181, 0.4);
+}
+
+/* ==== Animations ==== */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
