@@ -30,15 +30,8 @@
 </head>
 <body>
   <!-- Dynamic header (external) -->
-<div id="header-container"></div>
-
-<script>
-fetch('header1.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('header-container').innerHTML = html;
-  });
-</script>
+  <div id="header-container"></div>
+  <script src="header.js"></script>
 
   <!-- HERO SECTION (full width with background overlay) -->
   <div class="container-fluid hero-wrapper" style="background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://constructionscert.co.uk/course.jpg') center/cover no-repeat;">
