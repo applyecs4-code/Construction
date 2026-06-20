@@ -1,0 +1,27 @@
+        # robots.txt for https://constructionscert.co.uk
+# Last Updated: 30-08-2025
+
+# Allow all search engines to crawl the site
+User-agent: *
+Disallow: /payment.php/
+Disallow: /pmt.html/
+Disallow: /book.php/
+Disallow: /googlelogin.php/
+Disallow: /login.php/
+Disallow: /register.php/
+Disallow: /config.php/
+Disallow: /forgot.php/
+Disallow: /logout.php/
+Disallow: /test-mail.php/
+Disallow: /facebooklogin.php/
+Disallow: /dashboard.php/
+Disallow: /googlecallbeck.php/
+Disallow: /cardpayment.php/
+Disallow: /booking.php/
+Disallow: /payment-nvq.php/
+Disallow: /book.php/
+Allow: /
+
+# Sitemap location
+Sitemap: https://constructionscert.co.uk/sitemap.xml
+    

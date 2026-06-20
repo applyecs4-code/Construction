@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HCP445GD4T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HCP445GD4T');
+    </script>
+
+    <!-- Title & Description -->
+    <title>constructionscert UK Login | Manage Your CSCS Card Applications</title>
+    <meta name="description" content="Login to your constructionscert UK account to manage CSCS card applications, track progress, and access construction training services. Secure UK-based portal.">
+
+    <!-- Keywords -->
+    <meta name="keywords" content="constructionscert login UK, CSCS card portal, construction certification login, UK CSCS application portal, secure login portal">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://constructionscert.co.uk/login.html" />
+
+    <!-- Robots (Login page not for indexing) -->
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta http-equiv="X-Robots-Tag" content="noindex, nofollow, noarchive" />
+
+    <!-- Author / Publisher -->
+    <meta name="author" content="constructionscert UK" />
+    <meta name="publisher" content="constructionscert UK" />
+
+    <!-- Language -->
+    <meta http-equiv="Content-Language" content="en-GB" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logo10.png">
+    <link rel="apple-touch-icon" href="img/logo10.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Client Portal Login | constructionscert UK">
+    <meta property="og:description" content="Secure login to your constructionscert UK client portal for CSCS card applications and certification tracking.">
+    <meta property="og:url" content="https://constructionscert.co.uk/login.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:site_name" content="constructionscert UK">
+    <meta property="og:image" content="https://www.constructionscert.co.uk/img/logo10.png">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #005ea5;
+            --primary-dark: #00437e;
+            --primary-light: #1d70b8;
+            --secondary: #ffbf47;
+            --secondary-light: #ffdd99;
+            --text: #0b0c0c;
+            --light-gray: #f3f2f1;
+            --border: #b1b4b6;
+            --success: #00703c;
+            --danger: #d4351c;
+            --warning: #f47738;
+            --gov-blue: #003078;
+            --gov-light-blue: #5694ca;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+        }
+        .login-container {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .logo-section img {
+            height: 80px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-section img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-section h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-section .tagline {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .logo-section .description {
+            color: #505a5f;
+            font-size: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .wrapper {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #dee0e2;
+        }
+
+        .wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+        }
+
+        .uk-gov-banner {
+            background: var(--gov-blue);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin: -40px -40px 30px -40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .uk-gov-banner p {
+            font-size: 14px;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        .uk-gov-banner strong {
+            color: var(--secondary);
+        }
+
+        .form-toggle-container {
+            margin-bottom: 30px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            padding: 4px;
+            border: 1px solid var(--border);
+        }
+
+        .form-toggle-buttons {
+            display: flex;
+            position: relative;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: calc(50% - 4px);
+            height: calc(100% - 8px);
+            background: var(--primary);
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+
+        .toggle-slider.register {
+            transform: translateX(100%);
+        }
+
+        .form-toggle-buttons button {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 2;
+            font-size: 16px;
+            border-radius: 6px;
+        }
+
+        .form-toggle-buttons button.active {
+            color: white;
+        }
+
+        .form-container {
+            position: relative;
+            min-height: 300px;
+        }
+
+        .form {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form.active {
+            display: block;
+        }
+
+        .form-header {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .form-header h2 {
+            color: var(--primary-dark);
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: #505a5f;
+            font-size: 15px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 18px;
+            z-index: 2;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px 16px 52px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: white;
+            color: var(--text);
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group input::placeholder {
+            color: #747678;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 94, 165, 0.2);
+        }
+
+        .password-strength {
+            margin-top: 8px;
+            height: 6px;
+            background: var(--light-gray);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--danger);
+            transition: width 0.3s ease, background-color 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .password-strength.weak .password-strength-bar {
+            width: 33%;
+            background: var(--danger);
+        }
+
+        .password-strength.medium .password-strength-bar {
+            width: 66%;
+            background: var(--warning);
+        }
+
+        .password-strength.strong .password-strength-bar {
+            width: 100%;
+            background: var(--success);
+        }
+
+        .password-strength-text {
+            font-size: 12px;
+            color: #505a5f;
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-me input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
+        .remember-me label {
+            color: var(--text);
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .forgot-password a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .forgot-password a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 94, 165, 0.25);
+        }
+
+        .submit-btn i {
+            font-size: 18px;
+        }
+
+        .form-footer {
+            text-align: center;
+            color: #505a5f;
+            font-size: 15px;
+            border-top: 1px solid var(--light-gray);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .form-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .form-footer a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .security-notice {
+            background: var(--light-gray);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 4px solid var(--primary);
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .security-notice-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--primary-dark);
+        }
+
+        .security-notice-header i {
+            font-size: 20px;
+            color: var(--primary);
+        }
+
+        .security-notice-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .security-notice ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+
+        .security-notice li {
+            margin-bottom: 8px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .security-notice li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .contact-support {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-gray);
+            color: #505a5f;
+        }
+
+        .contact-support a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .contact-support a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Terms and Conditions */
+        .terms-agreement {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #dee0e2;
+        }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .terms-checkbox input {
+            margin-top: 4px;
+            accent-color: var(--primary);
+        }
+
+        .terms-checkbox label {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .terms-checkbox a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .terms-checkbox a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .wrapper {
+                padding: 30px 25px;
+            }
+            
+            .uk-gov-banner {
+                margin: -30px -25px 25px -25px;
+            }
+            
+            .logo-section h1 {
+                font-size: 28px;
+            }
+            
+            .logo-section .tagline {
+                font-size: 16px;
+            }
+            
+            .form-header h2 {
+                font-size: 22px;
+            }
+            
+            .form-options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .wrapper {
+                padding: 25px 20px;
+            }
+            
+            .uk-gov-banner {
+                margin: -25px -20px 20px -20px;
+            }
+            
+            .form-toggle-buttons button {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+            
+            .submit-btn {
+                padding: 16px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+  <div id="header-container"></div>
+  <script src="header.js"></script>
+    <div class="login-container">
+        <div class="logo-section">
+            <img src="https://constructionscert.co.uk/img/logo10.png" alt="constructionscert UK Logo">
+            <h1>constructionscert UK</h1>
+            <div class="tagline">CSCS Card Application Portal</div>
+            <div class="description">Secure login to manage your CSCS card applications and certifications</div>
+        </div>
+
+        <div class="wrapper">
+            <div class="uk-gov-banner">
+            </div>
+
+            <div class="form-toggle-container">
+                <div class="form-toggle-buttons">
+                    <div class="toggle-slider" id="toggleSlider"></div>
+                    <button id="loginBtn" class="active" onclick="switchForm('login')">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <button id="registerBtn" onclick="switchForm('register')">
+                        <i class="fas fa-user-plus"></i> Register
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <!-- LOGIN FORM -->
+                <div id="loginForm" class="form active">
+                    <div class="form-header">
+                        <h2>Welcome Back</h2>
+                        <p>Sign in to your constructionscert account</p>
+                    </div>
+                    
+                    <form id="loginFormElement" method="POST" action="https://constructionscert.co.uk/api/login">
+                        <div class="form-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="loginEmail" name="email" placeholder="Email address" required 
+                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                   title="Please enter a valid email address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" name="password" placeholder="Password" required
+                                   minlength="8"
+                                   title="Password must be at least 8 characters">
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="rememberMe" name="remember">
+                                <label for="rememberMe">Keep me signed in</label>
+                            </div>
+                            <div class="forgot-password">
+                                <a href="https://constructionscert.co.uk/reset-password">Forgot password?</a>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-sign-in-alt"></i> Sign In
+                        </button>
+                    </form>
+                    
+                    <div class="form-footer">
+                        Don't have an account? <a onclick="switchForm('register')">Register here</a>
+                    </div>
+                </div>
+
+                <!-- REGISTER FORM -->
+                <div id="registerForm" class="form">
+                    <div class="form-header">
+                        <h2>Create Account</h2>
+                        <p>Register for constructionscert services</p>
+                    </div>
+                    
+                    <form id="registerFormElement" method="POST" action="https://constructionscert.co.uk/api/register">
+                        <div class="form-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="registerName" name="full_name" placeholder="Full name" required
+                                   pattern="[A-Za-z\s]{2,50}"
+                                   title="Please enter your full name (letters and spaces only)">
+                        </div>
+                        
+                        <div class="form-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="registerEmail" name="email" placeholder="Email address" required
+                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                   title="Please enter a valid email address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="registerPhone" name="phone" placeholder="Phone number (optional)"
+                                   pattern="[0-9\s\-+()]{10,20}"
+                                   title="Please enter a valid phone number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="registerPassword" name="password" placeholder="Create password" required
+                                   minlength="8"
+                                   onkeyup="checkPasswordStrength(this.value)">
+                            <div class="password-strength" id="passwordStrength">
+                                <div class="password-strength-bar"></div>
+                            </div>
+                            <div class="password-strength-text" id="passwordStrengthText">Password strength: None</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="registerConfirmPassword" name="confirm_password" 
+                                   placeholder="Confirm password" required
+                                   onkeyup="checkPasswordMatch()">
+                            <div id="passwordMatch" style="font-size: 12px; margin-top: 4px; color: #505a5f;"></div>
+                        </div>
+                        
+                        <div class="terms-agreement">
+                            <div class="terms-checkbox">
+                                <input type="checkbox" id="acceptTerms" name="accept_terms" required>
+                                <label for="acceptTerms">
+                                    I agree to the <a href="https://constructionscert.co.uk/terms">Terms of Service</a> and 
+                                    <a href="https://constructionscert.co.uk/privacy">Privacy Policy</a>. I understand that constructionscert 
+                                    is a service provider for CSCS card applications and is not affiliated with CITB or CSCS.
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-user-plus"></i> Create Account
+                        </button>
+                    </form>
+                    
+                    <div class="form-footer">
+                        Already have an account? <a onclick="switchForm('login')">Login here</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="security-notice">
+                <div class="security-notice-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Security & Data Protection</h3>
+                </div>
+                <p>Your security is our priority. We implement UK-standard protections:</p>
+                <ul>
+                    <li>256-bit SSL encryption for all data transmissions</li>
+                    <li>UK GDPR compliant data handling</li>
+                    <li>Regular security audits and monitoring</li>
+                    <li>Secure password storage with bcrypt hashing</li>
+                    <li>Two-factor authentication available for enhanced security</li>
+                </ul>
+            </div>
+            
+            <div class="contact-support">
+                <p>Need help? Contact our support team:</p>
+                <a href="mailto:support@constructionscert.co.uk">
+                    <i class="fas fa-envelope"></i> support@constructionscert.co.uk
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchForm(formType) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const toggleSlider = document.getElementById('toggleSlider');
+            
+            if (formType === 'login') {
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                loginBtn.classList.add('active');
+                registerBtn.classList.remove('active');
+                toggleSlider.classList.remove('register');
+            } else {
+                loginForm.classList.remove('active');
+                registerForm.classList.add('active');
+                loginBtn.classList.remove('active');
+                registerBtn.classList.add('active');
+                toggleSlider.classList.add('register');
+            }
+        }
+        
+        function checkPasswordStrength(password) {
+            const strengthBar = document.querySelector('#passwordStrength .password-strength-bar');
+            const strengthText = document.getElementById('passwordStrengthText');
+            const strengthContainer = document.getElementById('passwordStrength');
+            
+            // Reset
+            strengthContainer.className = 'password-strength';
+            strengthText.textContent = 'Password strength: None';
+            
+            if (password.length === 0) return;
+            
+            let strength = 0;
+            
+            // Length check
+            if (password.length >= 8) strength++;
+            if (password.length >= 12) strength++;
+            
+            // Complexity checks
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            // Update UI
+            if (strength <= 2) {
+                strengthContainer.classList.add('weak');
+                strengthText.textContent = 'Password strength: Weak';
+            } else if (strength <= 4) {
+                strengthContainer.classList.add('medium');
+                strengthText.textContent = 'Password strength: Medium';
+            } else {
+                strengthContainer.classList.add('strong');
+                strengthText.textContent = 'Password strength: Strong';
+            }
+        }
+        
+        function checkPasswordMatch() {
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            const matchElement = document.getElementById('passwordMatch');
+            
+            if (confirmPassword.length === 0) {
+                matchElement.textContent = '';
+                return;
+            }
+            
+            if (password === confirmPassword) {
+                matchElement.textContent = '✓ Passwords match';
+                matchElement.style.color = '#00703c';
+            } else {
+                matchElement.textContent = '✗ Passwords do not match';
+                matchElement.style.color = '#d4351c';
+            }
+        }
+        
+        // Form submission handling
+        document.getElementById('loginFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Basic validation
+            if (!email || !password) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // In a real implementation, this would be an API call
+            // For demo purposes, we'll simulate a login
+            console.log('Login attempt:', { email, password });
+            
+            // Show success message and redirect
+            alert('Login successful! Redirecting to your dashboard...');
+            // window.location.href = 'https://constructionscert.co.uk/dashboard';
+        });
+        
+        document.getElementById('registerFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            const termsAccepted = document.getElementById('acceptTerms').checked;
+            
+            // Validation
+            if (!name || !email || !password || !confirmPassword) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long');
+                return;
+            }
+            
+            if (!termsAccepted) {
+                alert('You must accept the Terms of Service and Privacy Policy');
+                return;
+            }
+            
+            // In a real implementation, this would be an API call
+            console.log('Registration attempt:', { name, email, password });
+            
+            // Show success message and redirect to login
+            alert('Account created successfully! Please login with your credentials.');
+            switchForm('login');
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set focus on email field in login form
+            if (document.getElementById('loginEmail')) {
+                document.getElementById('loginEmail').focus();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+/* General Section Styling */
+section {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.7;
+}
+
+/* Headings */
+section h1 {
+  font-size: 32px;
+  color: #004080;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 26px;
+  color: #0073e6;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+section h3 {
+  font-size: 20px;
+  color: #0055a5;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+/* Paragraphs */
+section p {
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+/* Lists */
+section ul {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+section ul li {
+  margin-bottom: 8px;
+}
+
+/* Links */
+section a {
+  color: #0066cc;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+section a:hover {
+  color: #00aae4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  section {
+    padding: 20px 15px;
+  }
+
+  section h1 {
+    font-size: 26px;
+  }
+
+  section h2 {
+    font-size: 22px;
+  }
+
+  section h3 {
+    font-size: 18px;
+  }
+}

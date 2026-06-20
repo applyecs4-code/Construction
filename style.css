@@ -1,0 +1,312 @@
+/* ================== RESET ================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ================== CONTAINER ================== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px;
+}
+
+/* ================== HEADINGS ================== */
+h1, h2, h3, h4, h5, h6 {
+  word-wrap: break-word;
+}
+
+/* ================== BUTTONS ================== */
+button {
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+/* ================== HEADER & NAVBAR ================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  padding: 20px 35px;
+}
+
+/* BRAND GLOW */
+.nav-brand {
+  font-size: 20px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #fbfcfc, #6bdab5, #4959d4);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowMove 3s linear infinite;
+}
+
+@keyframes glowMove {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ================== NAV MENU ================== */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-menu li {
+  position: relative;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  padding: 10px 12px;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-menu a:hover {
+  color: #6170dc;
+  transform: translateY(-3px);
+}
+
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: #4f6ddb;
+  transition: width 0.4s;
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+/* ================== DROPDOWN ================== */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  flex-direction: column;
+  min-width: 330px;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0,255,255,0.1);
+  padding: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.nav-menu li:hover .dropdown {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown a {
+  padding: 8px 12px;
+  color: #fff;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.dropdown a:hover {
+  background: rgba(0, 255, 255, 0.1);
+}
+
+/* ================== HAMBURGER ================== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 1100;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: #6ea8ff;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(9px);
+}
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-9px);
+}
+
+/* ================== ACCOUNT LINK ================== */
+.account-link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: linear-gradient(45deg,#0f8fca,#2b47b5, #12a7ec);
+  background-size: 200% 200%;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 5px rgba(0,123,255,0.4);
+}
+
+.account-link:hover {
+  background-position: right center;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 12px rgba(9,15,16,0.7), 0 0 20px rgba(5,8,11,0.5);
+}
+
+/* ================== AI PANEL & ORB ================== */
+.ai-orb {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 60px;
+  height: 60px;
+}
+
+.panel {
+  position: fixed;
+  width: 220px;
+  right: 15px;
+  bottom: 85px;
+}
+
+/* ================== GRID ================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* ================== CSCS CARDS - GOV.UK STYLE ================== */
+.cscs-card {
+  background: #fff;
+  color: #0b0c0c;
+  border: 2px solid #d6d7d9;
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin: 12px 0;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cscs-card:hover {
+  border-color: #1d70b8;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.cscs-card::after {
+  content: "\25BC"; /* Down arrow */
+  font-size: 16px;
+  color: #505a5f;
+  transition: transform 0.3s ease;
+}
+
+.cscs-card.active::after {
+  transform: rotate(180deg);
+  color: #1d70b8;
+}
+
+.cscs-card span {
+  font-size: 17px;
+  font-weight: 600;
+  color: #0b0c0c;
+}
+
+/* Card Content */
+.cscs-card-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 18px;
+  background: #f3f2f1;
+  border-left: 4px solid #1d70b8;
+  font-size: 15px;
+  color: #343a40;
+}
+
+.cscs-card.active + .cscs-card-content {
+  max-height: 300px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+
+/* ================== MEDIA QUERIES ================== */
+@media(max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 80px 20px;
+    background: rgba(0,0,0,0.95);
+    transform: translateY(-100%);
+    transition: all 0.4s ease;
+  }
+  .nav-menu.show { transform: translateY(0); }
+  .nav-menu li { width: 100%; text-align: left; }
+  .dropdown { display: none; position: static; width: 100%; background: none; box-shadow: none; padding: 0; margin-left: 20px; }
+  .expand .dropdown { display: block; }
+  .drop-btn { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+  .drop-btn i { transition: transform 0.3s; }
+  .expand .drop-btn i { transform: rotate(180deg); }
+  .panel { width: 90%; right: 5%; }
+  .panel button { font-size: 14px; padding: 12px; }
+  .ai-orb { width: 50px; height: 50px; }
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  p { font-size: 14px; }
+}
+
+@media(max-width: 480px) {
+  .panel { width: 95%; right: 2.5%; }
+  .panel button { font-size: 13px; padding: 10px; }
+  h1 { font-size: 20px; }
+  h2 { font-size: 18px; }
+  p { font-size: 13px; }
+}
