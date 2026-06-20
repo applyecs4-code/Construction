@@ -54,17 +54,8 @@
     </style>
 </head>
 <body>
-    <!-- dynamic header (external) -->
-    <div id="header-container"></div>
-
-<script>
-fetch('header1.html')
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById('header-container').innerHTML = html;
-  });
-</script>
-
+  <div id="header-container"></div>
+  <script src="header.js"></script>
     <div class="container">
         <div class="booking-form">
             <!-- price badge updated to £79 + VAT -->
