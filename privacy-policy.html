@@ -581,8 +581,35 @@
 </head>
 <body>
     <!-- Header Placeholder -->
-  <div id="header-container"></div>
-  <script src="header.js"></script>
+    <div id="header-container"></div>
+    <script>
+        // Simple header injection if header.js is missing
+        document.addEventListener('DOMContentLoaded', function() {
+            const headerContainer = document.getElementById('header-container');
+            if (headerContainer) {
+                headerContainer.innerHTML = `
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                        <div class="container">
+                            <a class="navbar-brand fw-bold" href="https://constructionscert.co.uk">
+                                <img src="https://constructionscert.co.uk/img/constructionscert-logo.png" alt="ConstructionsCert" height="40" class="me-2">
+                                ConstructionsCert
+                            </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item"><a class="nav-link" href="https://constructionscert.co.uk">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="book-green-card-course.html">Book Course</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="https://constructionscert.co.uk/contact">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                `;
+            }
+        });
+    </script>
 
     <!-- Page Header -->
     <header class="page-header">
