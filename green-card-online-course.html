@@ -1,4 +1,4 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8">
@@ -15,11 +15,11 @@
   <meta name="geo.position" content="54.5;-3.5">
   <meta name="ICBM" content="54.5, -3.5">
   <link rel="canonical" href="https://constructionscert.co.uk/green-card-online-course">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Main ConstructionsCert styles -->
-    <link rel="stylesheet" href="course.css">
-    <!-- AddressNow UK Address Lookup -->
-    <link rel="stylesheet" href="https://api.addressnow.co.uk/css/addressnow-2.20.min.css?key=gm26-ce18-kr99-hj91" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AddressNow UK Address Lookup -->
+  <link rel="stylesheet" href="https://api.addressnow.co.uk/css/addressnow-2.20.min.css?key=gm26-ce18-kr99-hj91" />
   <style>
     /* custom brand & component styles – matching the original look */
     body {
@@ -31,7 +31,7 @@
       font-weight: 600;
     }
     .hero-section {
-      background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&auto=format');
+      background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&auto=format');
       background-size: cover;
       background-position: center;
       padding: 3rem 1rem;
@@ -71,13 +71,13 @@
     }
     .circle-chart__background {
       stroke: #efefef;
-      stroke-width: 1;
+      stroke-width: 2;
       fill: none;
     }
     .circle-chart__circle {
       stroke: #2c7a48;
-      stroke-width: 1;
-      stroke-dasharray: 98, 100; /* 98% */
+      stroke-width: 2;
+      stroke-dasharray: 98, 100;
       stroke-linecap: round;
       fill: none;
     }
@@ -127,238 +127,319 @@
       display: inline-block;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
-    /* footer hidden functionally but scripts run */
-    .footerlinks, .mt-5.pt-5 .fw-bold { display: none; }
     /* images rounded */
     .rounded-circle-custom {
       border-radius: 50%;
       max-width: 100%;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
+    /* ensure accordion flush works with bootstrap */
+    .accordion-flush .accordion-item {
+      border-bottom: 1px solid #dee2e6;
+    }
+    .accordion-flush .accordion-item:last-child {
+      border-bottom: 0;
+    }
+    .accordion-flush .accordion-button {
+      border-radius: 0;
+    }
+    /* footer hidden functionally but scripts run */
+    .footerlinks, .mt-5.pt-5 .fw-bold { display: none; }
   </style>
 </head>
 <body>
+  <!-- Header placeholder -->
   <div id="header-container"></div>
   <script src="header.js"></script>
+  <script>
+    // Simple header injection if header.js is missing
+    document.addEventListener('DOMContentLoaded', function() {
+      const headerContainer = document.getElementById('header-container');
+      if (headerContainer) {
+        headerContainer.innerHTML = `
+          <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container">
+              <a class="navbar-brand fw-bold" href="https://constructionscert.co.uk">
+                <img src="https://constructionscert.co.uk/img/constructionscert-logo.png" alt="ConstructionsCert" height="40" class="me-2">
+                ConstructionsCert
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item"><a class="nav-link" href="https://constructionscert.co.uk">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="book-green-card-course.html">Book Course</a></li>
+                  <li class="nav-item"><a class="nav-link" href="https://constructionscert.co.uk/contact">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        `;
+      }
+    });
+  </script>
 
-<!-- HERO SECTION (no header, just hero) -->
-<div class="hero-section">
-  <div class="container text-center py-4">
-    <h1 class="display-5 fw-bold">CSCS Green Card Online Course – Level 1 Health, Safety & Awareness (ConstructionsCert)</h1>
-    <div class="mx-auto lead" style="max-width: 800px;">
-      <p>To apply for a CSCS Green Labourer Card, you <strong>must</strong> complete a Level 1 Health, Safety & Awareness qualification. <span class="brand-highlight">ConstructionsCert</span> lets you complete this mandatory training 100% online – from your home, van, or site hut – in under 4 hours. No classroom, no travel, just your certificate.</p>
-    </div>
-    <a href="book-green-card-course.html" class="but1 herobut mt-3"><i class="fas fa-graduation-cap me-2"></i>Book Green Card Course →</a>
-  </div>
-</div>
-
-<!-- MAIN CONTENT: about course + why choose -->
-<div class="container my-5">
-  <div class="row align-items-center">
-    <div class="col-lg-7">
-      <h2 class="mb-4">Online Level 1 Health, Safety & Awareness Course For CSCS Green Card</h2>
-      <div>
-        <p>Unlike old‑school classroom training, this <strong>green card online course</strong> from ConstructionsCert can be done from your living room in Macclesfield or your van in Manchester. It takes less than 4 hours – you set the pace. Once you pass, you’ll hold a recognised Level 1 Health and Safety in Construction qualification, valid for 5 years. Use it to support your <a href="book-green-card-course.html" class="brand-highlight">CSCS Green Card application</a> straight away.</p>
-        <h3 class="h5 mt-4">Why choose our Green Card Online Course?</h3>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-star text-success me-2"></i>High first‑time pass rates – even if you’ve not studied for years</li>
-          <li><i class="fas fa-bolt text-success me-2"></i>Complete the <strong>green card online course</strong> in under 4 hours (most finish in 3)</li>
-          <li><i class="fas fa-file-alt text-success me-2"></i>Accredited Level 1 Health & Safety in Construction – accepted by CSCS</li>
-          <li><i class="fas fa-home text-success me-2"></i>No classroom, no travel – do it from anywhere in the UK</li>
-          <li><i class="fas fa-mobile-alt text-success me-2"></i>Mobile & desktop friendly – continue on your phone during lunch break</li>
-          <li><i class="fas fa-laptop text-success me-2"></i>Remote online exam – no test centre queues</li>
-        </ul>
-        <p>We’ve helped thousands of workers from Glasgow, Cardiff, Belfast and everywhere in between get their green card. You’re next.</p>
+  <!-- HERO SECTION -->
+  <div class="hero-section">
+    <div class="container text-center py-4">
+      <h1 class="display-5 fw-bold">CSCS Green Card Online Course – Level 1 Health, Safety & Awareness (ConstructionsCert)</h1>
+      <div class="mx-auto lead" style="max-width: 800px;">
+        <p>To apply for a CSCS Green Labourer Card, you <strong>must</strong> complete a Level 1 Health, Safety & Awareness qualification. <span class="brand-highlight">ConstructionsCert</span> lets you complete this mandatory training 100% online – from your home, van, or site hut – in under 4 hours. No classroom, no travel, just your certificate.</p>
       </div>
-      <a href="book-green-card-course.html" class="but1 mt-3"><i class="fas fa-arrow-right me-2"></i>Book this course</a>
-    </div>
-    <div class="col-lg-5 text-center mt-4 mt-lg-0">
-                     
-                    <img src="https://constructionscert.co.uk/img/CSCS-Green-Labourer-card.webp" alt="CSCS Green Labourer Card" class="img-fluid rounded-4 shadow" style="max-width: 320px;">
+      <a href="book-green-card-course.html" class="but1 herobut mt-3"><i class="fas fa-graduation-cap me-2"></i>Book Green Card Course →</a>
     </div>
   </div>
-</div>
 
-<!-- HOW IT WORKS + local SEO band (grey) -->
-<div class="grey-section py-5">
-  <div class="container">
-    <h2 class="text-center mb-4">How does the ConstructionsCert online course work?</h2>
-    <div class="row g-4 text-center">
-      <div class="col-md-4">
-        <div class="bg-white p-4 rounded-4 shadow-sm h-100">
-          <span class="display-4 text-success fw-bold">1.</span>
-          <p class="mt-2">Book your <strong>green card online course</strong> securely. You’ll get login details by email within minutes – even if you book at 2am.</p>
+  <!-- MAIN CONTENT: about course + why choose -->
+  <div class="container my-5">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <h2 class="mb-4">Online Level 1 Health, Safety & Awareness Course For CSCS Green Card</h2>
+        <div>
+          <p>Unlike old‑school classroom training, this <strong>green card online course</strong> from ConstructionsCert can be done from your living room in Macclesfield or your van in Manchester. It takes less than 4 hours – you set the pace. Once you pass, you’ll hold a recognised Level 1 Health and Safety in Construction qualification, valid for 5 years. Use it to support your <a href="book-green-card-course.html" class="brand-highlight">CSCS Green Card application</a> straight away.</p>
+          <h3 class="h5 mt-4">Why choose our Green Card Online Course?</h3>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-star text-success me-2"></i>High first‑time pass rates – even if you’ve not studied for years</li>
+            <li><i class="fas fa-bolt text-success me-2"></i>Complete the <strong>green card online course</strong> in under 4 hours (most finish in 3)</li>
+            <li><i class="fas fa-file-alt text-success me-2"></i>Accredited Level 1 Health & Safety in Construction – accepted by CSCS</li>
+            <li><i class="fas fa-home text-success me-2"></i>No classroom, no travel – do it from anywhere in the UK</li>
+            <li><i class="fas fa-mobile-alt text-success me-2"></i>Mobile & desktop friendly – continue on your phone during lunch break</li>
+            <li><i class="fas fa-laptop text-success me-2"></i>Remote online exam – no test centre queues</li>
+          </ul>
+          <p>We’ve helped thousands of workers from Glasgow, Cardiff, Belfast and everywhere in between get their green card. You’re next.</p>
+        </div>
+        <a href="book-green-card-course.html" class="but1 mt-3"><i class="fas fa-arrow-right me-2"></i>Book this course</a>
+      </div>
+      <div class="col-lg-5 text-center mt-4 mt-lg-0">
+        <img src="https://constructionscert.co.uk/img/CSCS-Green-Labourer-card.webp" alt="CSCS Green Labourer Card" class="img-fluid rounded-4 shadow" style="max-width: 320px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS + local SEO band (grey) -->
+  <div class="grey-section py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">How does the ConstructionsCert online course work?</h2>
+      <div class="row g-4 text-center">
+        <div class="col-md-4">
+          <div class="bg-white p-4 rounded-4 shadow-sm h-100">
+            <span class="display-4 text-success fw-bold">1.</span>
+            <p class="mt-2">Book your <strong>green card online course</strong> securely. You’ll get login details by email within minutes – even if you book at 2am.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bg-white p-4 rounded-4 shadow-sm h-100">
+            <span class="display-4 text-success fw-bold">2.</span>
+            <p class="mt-2">Complete the interactive modules and sit the short exam online. Webcam + ID check keeps it legit, but it’s stress‑free.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bg-white p-4 rounded-4 shadow-sm h-100">
+            <span class="display-4 text-success fw-bold">3.</span>
+            <p class="mt-2">Download your pass certificate (same day). Use it to apply for your CSCS Green Card and start working on UK sites.</p>
+          </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="bg-white p-4 rounded-4 shadow-sm h-100">
-          <span class="display-4 text-success fw-bold">2.</span>
-          <p class="mt-2">Complete the interactive modules and sit the short exam online. Webcam + ID check keeps it legit, but it’s stress‑free.</p>
-        </div>
+      <div class="mt-5 text-center">
+        <p class="fw-bold">Please note: You’ll need both this Health & Safety Awareness certificate AND the CITB Health, Safety & Environment (CSCS) test score to complete your Green Card application. We can help with both. Your Green Card is valid for 5 years – plenty of time to gain experience.</p>
+        <p class="mt-3"><i class="fas fa-map-marker-alt text-success me-2"></i> <span class="fw-bold">Serving every corner of the UK:</span> from London to Inverness, Liverpool to Norwich – our online course is accessible wherever you have internet.</p>
+        <a href="book-green-card-course.html" class="but1 mt-3"><i class="fas fa-check-circle me-2"></i>Book your course now</a>
       </div>
-      <div class="col-md-4">
-        <div class="bg-white p-4 rounded-4 shadow-sm h-100">
-          <span class="display-4 text-success fw-bold">3.</span>
-          <p class="mt-2">Download your pass certificate (same day). Use it to apply for your CSCS Green Card and start working on UK sites.</p>
-        </div>
-      </div>
-    </div>
-    <div class="mt-5 text-center">
-      <p class="fw-bold">Please note: You’ll need both this Health & Safety Awareness certificate AND the CITB Health, Safety & Environment (CSCS) test score to complete your Green Card application. We can help with both. Your Green Card is valid for 5 years – plenty of time to gain experience.</p>
-      <p class="mt-3"><i class="fas fa-map-marker-alt text-success me-2"></i> <span class="fw-bold">Serving every corner of the UK:</span> from London to Inverness, Liverpool to Norwich – our online course is accessible wherever you have internet.</p>
-      <a href="book-green-card-course.html" class="but1 mt-3"><i class="fas fa-check-circle me-2"></i>Book your course now</a>
-    </div>
 
-    <!-- YouTube embed -->
-    <div class="col-md-8 mx-auto mt-5">
-      <div class="video-wrapper shadow">
-        <iframe src="https://www.youtube.com/embed/M9hq-u1nbdo?si=xKHkEE3G6Wv6GcuB" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Green Card course overview"></iframe>
+      <!-- YouTube embed -->
+      <div class="col-md-8 mx-auto mt-5">
+        <div class="video-wrapper shadow">
+          <iframe src="https://www.youtube.com/embed/M9hq-u1nbdo?si=xKHkEE3G6Wv6GcuB" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Green Card course overview"></iframe>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- CURRICULUM + STATS  -->
-<div class="container py-5">
-  <div class="row">
-    <div class="col-md-7">
-      <h2 class="mb-3">About the Level 1 Health, Safety & Awareness Course</h2>
-      <div>
-        <p>You’ll learn the essentials to stay safe and compliant on any UK construction site. Modules cover:</p>
-        <ul>
-          <li>Health and safety law in construction (British standards)</li>
-          <li>Risk assessments and method statements (how to spot hazards)</li>
-          <li>Accident prevention and RIDDOR reporting</li>
-          <li>Your role in site safety – from worker to supervisor</li>
-          <li>Fire prevention, manual handling, and working at height basics</li>
-          <li>Personal protective equipment (PPE) requirements</li>
-        </ul>
-        <p>No jargon overload – just practical knowledge you’ll use every day. The course is designed for speakers of English as a first or second language, with clear voiceovers and simple assessments.</p>
-      </div>
-    </div>
-    <div class="col-md-5 text-center d-flex flex-column align-items-center justify-content-center">
-      <div class="circle-holder">
-        <span class="count">98</span>
-        <svg class="circle-chart" viewBox="0 0 36 36" width="200" height="200">
-          <circle class="circle-chart__background" cx="18" cy="18" r="16" stroke="#efefef" stroke-width="2" fill="none"></circle>
-          <circle class="circle-chart__circle" cx="18" cy="18" r="16" stroke="#2c7a48" stroke-width="2" fill="none" stroke-dasharray="98, 100" stroke-linecap="round"></circle>
-        </svg>
-      </div>
-      <p class="mt-3 fw-semibold stat-note">98% of learners agree the ConstructionsCert course is easy to use and understand</p>
-      <a href="book-green-card-course.html" class="but1 mt-3"><i class="fas fa-arrow-right me-2"></i>Book this green card course</a>
-    </div>
-  </div>
-</div>
-
-<!-- FAQ ACCORDION + image -->
-<div class="grey-section py-5">
-  <div class="container">
+  <!-- CURRICULUM + STATS  -->
+  <div class="container py-5">
     <div class="row">
-      <div class="col-lg-8">
-        <h2 class="mb-4">Frequently Asked Questions – Green Card Online Course</h2>
-        <div class="accordion accordion-flush" id="greenaccordion">
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="heading40"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse40">Who is this Green Card Online Course suitable for?</button></h3>
-            <div id="collapse40" class="accordion-collapse collapse" data-bs-parent="#greenaccordion"><div class="accordion-body">Anyone needing a CSCS Green Labourer Card to work on UK construction sites – labourers, new entrants, apprentices, or workers changing sectors. No prior qualifications needed.</div></div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="heading41"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse41">Why is the Health & Safety Awareness course mandatory?</button></h3>
-            <div id="collapse41" class="accordion-collapse collapse" data-bs-parent="#greenaccordion"><div class="accordion-body">Since 2014, the CSCS Green Card (replacing CSO) requires a Level 1 Health & Safety qualification. It ensures every site worker has basic safety training – reducing accidents. ConstructionsCert makes it easy to comply.</div></div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="heading43"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse43">Can I resit modules if I fail?</button></h3>
-            <div id="collapse43" class="accordion-collapse collapse" data-bs-parent="#greenaccordion"><div class="accordion-body">Absolutely. You can resit each module up to three times at no extra cost. We want you to succeed – no pressure.</div></div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="heading42"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse42">What do I need to complete the course? (UK tech requirements)</button></h3>
-            <div id="collapse42" class="accordion-collapse collapse" data-bs-parent="#greenaccordion"><div class="accordion-body"><ul class="mb-0"><li>A unique email address to log in.</li><li>PC/laptop with webcam, microphone, speaker and <strong>Google Chrome</strong> (Safari/Chromebook not compatible).</li><li>Photo ID (passport, driving licence) for exam verification.</li><li>Complete all modules before attempting the final exam.</li><li>Missed exams incur a £60 rebooking fee – so mark your calendar!</li><li>The course is in English only, and is non‑transferable/non‑refundable.</li><li>Certificate arrives within 7‑10 working days from the awarding body (industry standard).</li></ul></div></div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header" id="heading44"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse44">Is this course recognised in Scotland, Wales & Northern Ireland?</button></h3>
-            <div id="collapse44" class="accordion-collapse collapse" data-bs-parent="#greenaccordion"><div class="accordion-body">Yes, the Level 1 Award is UK-wide accepted. Whether you're working in Edinburgh, Swansea, Belfast or Bristol, the CSCS Green Card issued from this course lets you on site across the entire UK.</div></div>
-          </div>
+      <div class="col-md-7">
+        <h2 class="mb-3">About the Level 1 Health, Safety & Awareness Course</h2>
+        <div>
+          <p>You’ll learn the essentials to stay safe and compliant on any UK construction site. Modules cover:</p>
+          <ul>
+            <li>Health and safety law in construction (British standards)</li>
+            <li>Risk assessments and method statements (how to spot hazards)</li>
+            <li>Accident prevention and RIDDOR reporting</li>
+            <li>Your role in site safety – from worker to supervisor</li>
+            <li>Fire prevention, manual handling, and working at height basics</li>
+            <li>Personal protective equipment (PPE) requirements</li>
+          </ul>
+          <p>No jargon overload – just practical knowledge you’ll use every day. The course is designed for speakers of English as a first or second language, with clear voiceovers and simple assessments.</p>
         </div>
-        <a href="book-green-card-course.html" class="but1 mt-4"><i class="fas fa-ticket-alt me-2"></i>Book your green card course</a>
       </div>
-      <div class="col-lg-4 d-flex align-items-center justify-content-center mt-4 mt-lg-0">
-<img src="https://constructionscert.co.uk/img/CSCS-Green-Labourer-card.webp" alt="CSCS Green Labourer Card" class="rounded-circle-custom img-fluid" style="max-width: 260px;">
+      <div class="col-md-5 text-center d-flex flex-column align-items-center justify-content-center">
+        <div class="circle-holder">
+          <span class="count">98</span>
+          <svg class="circle-chart" viewBox="0 0 36 36" width="200" height="200">
+            <circle class="circle-chart__background" cx="18" cy="18" r="16" stroke="#efefef" stroke-width="2" fill="none"></circle>
+            <circle class="circle-chart__circle" cx="18" cy="18" r="16" stroke="#2c7a48" stroke-width="2" fill="none" stroke-dasharray="98, 100" stroke-linecap="round"></circle>
+          </svg>
+        </div>
+        <p class="mt-3 fw-semibold stat-note">98% of learners agree the ConstructionsCert course is easy to use and understand</p>
+        <a href="book-green-card-course.html" class="but1 mt-3"><i class="fas fa-arrow-right me-2"></i>Book this green card course</a>
       </div>
     </div>
   </div>
-</div>
 
-<!-- LOCAL SEO / EXTENDED WORD COUNT SECTION (expands to 750+ words total) -->
-<div class="container my-5">
-  <div class="row">
-    <div class="col-12 text-center">
-      <p class="lead"><span class="brand-highlight">ConstructionsCert</span> – trusted by construction workers in <strong>London, Birmingham, Manchester, Leeds, Glasgow, Bristol, Newcastle, Belfast, Cardiff, Liverpool, Sheffield, Edinburgh, Leicester, Coventry, Bradford, Nottingham, Hull, Plymouth, Stoke-on-Trent, Wolverhampton, Derby, Swansea, Southampton, Portsmouth, York, Aberdeen, Newport, Oxford, Cambridge, and every town across the UK.</strong> Wherever you are, we’ve got you covered.</p>
-      <p class="mt-4">Our online green card course is specifically designed for the UK construction industry. The Level 1 Health & Safety Awareness qualification is accredited by awarding bodies recognised by CSCS, CITB, and major contractors like Balfour Beatty, Kier, and Morgan Sindall. The course material reflects the latest UK legislation (Health and Safety at Work Act 1974, COSHH, RIDDOR, PPE 2018) and includes real-world scenarios from British sites. With 24/7 access, you can learn at your own pace – many students complete it in one evening. Upon passing, you’ll receive a PDF certificate same day, and the hard copy follows within two weeks. The qualification never expires, but for CSCS you need to apply for the green card within 5 years. After that, a short refresher keeps you current. If you're an overseas worker with a valid UK visa, this course is also open to you – just provide a passport and UK address. We've successfully trained workers from over 30 countries now based in the UK. The exam is invigilated remotely via webcam, so you don't need to travel to a test centre. Technical support is available 7 days a week by live chat. We also offer bundle discounts if you need both the course and the CITB test booked together. Contact us for group rates for companies.</p>
-      <a href="book-green-card-course.html" class="but1 mt-2"><i class="fas fa-credit-card me-2"></i>Start your course today</a>
+  <!-- FAQ ACCORDION + image -->
+  <div class="grey-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <h2 class="mb-4">Frequently Asked Questions – Green Card Online Course</h2>
+          <div class="accordion accordion-flush" id="greenaccordion">
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="heading40">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse40" aria-expanded="false" aria-controls="collapse40">
+                  Who is this Green Card Online Course suitable for?
+                </button>
+              </h3>
+              <div id="collapse40" class="accordion-collapse collapse" data-bs-parent="#greenaccordion">
+                <div class="accordion-body">Anyone needing a CSCS Green Labourer Card to work on UK construction sites – labourers, new entrants, apprentices, or workers changing sectors. No prior qualifications needed.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="heading41">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse41" aria-expanded="false" aria-controls="collapse41">
+                  Why is the Health & Safety Awareness course mandatory?
+                </button>
+              </h3>
+              <div id="collapse41" class="accordion-collapse collapse" data-bs-parent="#greenaccordion">
+                <div class="accordion-body">Since 2014, the CSCS Green Card (replacing CSO) requires a Level 1 Health & Safety qualification. It ensures every site worker has basic safety training – reducing accidents. ConstructionsCert makes it easy to comply.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="heading43">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse43" aria-expanded="false" aria-controls="collapse43">
+                  Can I resit modules if I fail?
+                </button>
+              </h3>
+              <div id="collapse43" class="accordion-collapse collapse" data-bs-parent="#greenaccordion">
+                <div class="accordion-body">Absolutely. You can resit each module up to three times at no extra cost. We want you to succeed – no pressure.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="heading42">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse42" aria-expanded="false" aria-controls="collapse42">
+                  What do I need to complete the course? (UK tech requirements)
+                </button>
+              </h3>
+              <div id="collapse42" class="accordion-collapse collapse" data-bs-parent="#greenaccordion">
+                <div class="accordion-body">
+                  <ul class="mb-0">
+                    <li>A unique email address to log in.</li>
+                    <li>PC/laptop with webcam, microphone, speaker and <strong>Google Chrome</strong> (Safari/Chromebook not compatible).</li>
+                    <li>Photo ID (passport, driving licence) for exam verification.</li>
+                    <li>Complete all modules before attempting the final exam.</li>
+                    <li>Missed exams incur a £60 rebooking fee – so mark your calendar!</li>
+                    <li>The course is in English only, and is non‑transferable/non‑refundable.</li>
+                    <li>Certificate arrives within 7‑10 working days from the awarding body (industry standard).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="heading44">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse44" aria-expanded="false" aria-controls="collapse44">
+                  Is this course recognised in Scotland, Wales & Northern Ireland?
+                </button>
+              </h3>
+              <div id="collapse44" class="accordion-collapse collapse" data-bs-parent="#greenaccordion">
+                <div class="accordion-body">Yes, the Level 1 Award is UK-wide accepted. Whether you're working in Edinburgh, Swansea, Belfast or Bristol, the CSCS Green Card issued from this course lets you on site across the entire UK.</div>
+              </div>
+            </div>
+          </div>
+          <a href="book-green-card-course.html" class="but1 mt-4"><i class="fas fa-ticket-alt me-2"></i>Book your green card course</a>
+        </div>
+        <div class="col-lg-4 d-flex align-items-center justify-content-center mt-4 mt-lg-0">
+          <img src="https://constructionscert.co.uk/img/CSCS-Green-Labourer-card.webp" alt="CSCS Green Labourer Card" class="rounded-circle-custom img-fluid" style="max-width: 260px;">
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- SCRIPTS: jQuery, Bootstrap, custom, tracking & schema -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TJLHDHD');</script>
-<!-- Zendesk widget (placeholder) -->
-<script>window.zESettings = { webWidget: { chat: { connectOnPageLoad: false } } };</script>
-<script src="https://static.zdassets.com/ekr/snippet.js?key=97a11595-77cb-4111-8d4b-e4d3a8d8ca94"></script>
+  <!-- LOCAL SEO / EXTENDED WORD COUNT SECTION -->
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-12 text-center">
+        <p class="lead"><span class="brand-highlight">ConstructionsCert</span> – trusted by construction workers in <strong>London, Birmingham, Manchester, Leeds, Glasgow, Bristol, Newcastle, Belfast, Cardiff, Liverpool, Sheffield, Edinburgh, Leicester, Coventry, Bradford, Nottingham, Hull, Plymouth, Stoke-on-Trent, Wolverhampton, Derby, Swansea, Southampton, Portsmouth, York, Aberdeen, Newport, Oxford, Cambridge, and every town across the UK.</strong> Wherever you are, we’ve got you covered.</p>
+        <p class="mt-4">Our online green card course is specifically designed for the UK construction industry. The Level 1 Health & Safety Awareness qualification is accredited by awarding bodies recognised by CSCS, CITB, and major contractors like Balfour Beatty, Kier, and Morgan Sindall. The course material reflects the latest UK legislation (Health and Safety at Work Act 1974, COSHH, RIDDOR, PPE 2018) and includes real-world scenarios from British sites. With 24/7 access, you can learn at your own pace – many students complete it in one evening. Upon passing, you’ll receive a PDF certificate same day, and the hard copy follows within two weeks. The qualification never expires, but for CSCS you need to apply for the green card within 5 years. After that, a short refresher keeps you current. If you're an overseas worker with a valid UK visa, this course is also open to you – just provide a passport and UK address. We've successfully trained workers from over 30 countries now based in the UK. The exam is invigilated remotely via webcam, so you don't need to travel to a test centre. Technical support is available 7 days a week by live chat. We also offer bundle discounts if you need both the course and the CITB test booked together. Contact us for group rates for companies.</p>
+        <a href="book-green-card-course.html" class="but1 mt-2"><i class="fas fa-credit-card me-2"></i>Start your course today</a>
+      </div>
+    </div>
+  </div>
 
-<!-- ecommerce view_item -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  dataLayer.push({ ecommerce: null });
-  dataLayer.push({
-    event: 'view_item',
-    ecommerce: {
-      items: [{
-        item_name: 'HSA Green Card Course',
-        item_brand: 'ConstructionsCert',
-        item_category: 'Course',
-        item_id: 'CSCS-GC01',
-        currency: 'GBP',
-        price: 156
-      }]
+  <!-- SCRIPTS: jQuery, Bootstrap, custom, tracking & schema -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TJLHDHD');</script>
+  
+  <!-- Zendesk widget (placeholder) -->
+  <script>window.zESettings = { webWidget: { chat: { connectOnPageLoad: false } } };</script>
+  <script src="https://static.zdassets.com/ekr/snippet.js?key=97a11595-77cb-4111-8d4b-e4d3a8d8ca94"></script>
+
+  <!-- ecommerce view_item -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({ ecommerce: null });
+    dataLayer.push({
+      event: 'view_item',
+      ecommerce: {
+        items: [{
+          item_name: 'HSA Green Card Course',
+          item_brand: 'ConstructionsCert',
+          item_category: 'Course',
+          item_id: 'CSCS-GC01',
+          currency: 'GBP',
+          price: 156
+        }]
+      }
+    });
+  </script>
+
+  <!-- Schema.org Organization + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ConstructionsCert",
+    "url": "https://constructionscert.co.uk/",
+    "logo": "https://constructionscert.co.uk/img/constructionscert-logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "areaServed": "GB",
+      "availableLanguage": "en"
     }
-  });
-</script>
-
-<!-- Schema.org Organization + FAQ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "ConstructionsCert",
-  "url": "https://constructionscert.co.uk/",
-  "logo": "https://constructionscert.co.uk/img/constructionscert-logo.png",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer service",
-    "areaServed": "GB",
-    "availableLanguage": "en"
   }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"Who is this Green Card Online Course suitable for?","acceptedAnswer":{"@type":"Answer","text":"Labourers and new entrants needing a CSCS Green Labourer Card for UK construction sites."}},
-    {"@type":"Question","name":"Why do I need the Health & Safety Awareness course?","acceptedAnswer":{"@type":"Answer","text":"It's mandatory for the CSCS Green Card (replaced CSO in 2014) to ensure basic safety training."}},
-    {"@type":"Question","name":"Can I resit if I fail the course?","acceptedAnswer":{"@type":"Answer","text":"Yes, up to three resits per module are included."}},
-    {"@type":"Question","name":"What are the technical requirements?","acceptedAnswer":{"@type":"Answer","text":"PC with Chrome browser, webcam, microphone, photo ID. Not compatible with Safari or Chromebook."}},
-    {"@type":"Question","name":"Is this course valid across the whole UK?","acceptedAnswer":{"@type":"Answer","text":"Yes, the Level 1 qualification is accepted in England, Scotland, Wales and Northern Ireland."}}
-  ]
-}
-</script>
-<!-- human touch console -->
-<script>console.log('👷 ConstructionsCert – built for UK workers, by people who know construction.');</script>
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Who is this Green Card Online Course suitable for?","acceptedAnswer":{"@type":"Answer","text":"Labourers and new entrants needing a CSCS Green Labourer Card for UK construction sites."}},
+      {"@type":"Question","name":"Why do I need the Health & Safety Awareness course?","acceptedAnswer":{"@type":"Answer","text":"It's mandatory for the CSCS Green Card (replaced CSO in 2014) to ensure basic safety training."}},
+      {"@type":"Question","name":"Can I resit if I fail the course?","acceptedAnswer":{"@type":"Answer","text":"Yes, up to three resits per module are included."}},
+      {"@type":"Question","name":"What are the technical requirements?","acceptedAnswer":{"@type":"Answer","text":"PC with Chrome browser, webcam, microphone, photo ID. Not compatible with Safari or Chromebook."}},
+      {"@type":"Question","name":"Is this course valid across the whole UK?","acceptedAnswer":{"@type":"Answer","text":"Yes, the Level 1 qualification is accepted in England, Scotland, Wales and Northern Ireland."}}
+    ]
+  }
+  </script>
+  
+  <!-- human touch console -->
+  <script>console.log('👷 ConstructionsCert – built for UK workers, by people who know construction.');</script>
 
-<!-- hidden footer elements (as per original) but functional -->
-<div style="display:none;">footer hidden</div>
+  <!-- hidden footer elements (as per original) but functional -->
+  <div style="display:none;">footer hidden</div>
 </body>
-</html>    
+</html>
