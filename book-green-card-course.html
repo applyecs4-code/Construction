@@ -1,10 +1,9 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSCS Green Card Level 1 | ConstructionsCert</title>
-    <!-- Meta tags updated for Green Card -->
     <meta name="description" content="Book your CSCS Green Card course online. Level 1 Health and Safety, remote assessment, fast track, £79. UK recognised.">
     <meta property="og:title" content="CSCS Green Card Level 1 – ConstructionsCert">
     <meta property="og:description" content="Enrol on the CSCS Green Card course (Level 1 Award in Health and Safety). Simple online booking.">
@@ -13,15 +12,27 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:site_name" content="ConstructionsCert">
     <link rel="canonical" href="https://constructionscert.co.uk/book-cscs-green-card">
-    <!-- Font Awesome & Google Fonts -->
-    <!-- Main ConstructionsCert styles -->
+
+    <!-- ✅ Font Awesome & Google Fonts (REQUIRED for header icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Main styles -->
     <link rel="stylesheet" href="course.css">
-    <!-- AddressNow UK Address Lookup -->
+
+    <!-- AddressNow -->
     <link rel="stylesheet" href="https://api.addressnow.co.uk/css/addressnow-2.20.min.css?key=gm26-ce18-kr99-hj91" />
-    <!-- Form specific styles (extended) -->
+
+    <!-- ✅ common.js — loads header.html + footer.html + all menu logic -->
+    <script src="common.js" defer></script>
+
     <style>
         * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
         body { background: #f9fbfa; margin: 0; padding: 0; }
+
+        /* ✅ Push content below fixed header */
+        .page-wrapper { padding-top: 100px; }
+
         .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
         .booking-form { background: white; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); padding: 2.5rem; margin: 2rem 0; }
         .price-badge { background: white; border-radius: 50px; padding: 0.4rem 1.2rem; border: 1px solid #e2e8f0; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 1rem; }
@@ -34,318 +45,257 @@
         .radio-group { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem; }
         .btn-primary-custom { background: #0B5E42; color: white; font-weight: 600; padding: 0.9rem 2.5rem; border-radius: 40px; border: none; font-size: 1.1rem; cursor: pointer; transition: 0.2s; box-shadow: 0 10px 20px rgba(11,94,66,0.2); }
         .btn-primary-custom:hover { background: #1e7e5a; transform: translateY(-2px); }
+        .btn-primary-custom:disabled { background: #a0c0b5; cursor: not-allowed; transform: none; }
         .manual-link { color: #0B5E42; text-decoration: underline; font-weight: 600; cursor: pointer; margin-left: 10px; font-size: 0.95rem; }
         .summary-box { background: #f8fafc; border-radius: 16px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #0B5E42; }
         .summary-box p { margin: 0.5rem 0; }
         .footer-note { background: #1e293b; color: #cbd5e1; padding: 2rem 0; margin-top: 3rem; }
         .footer-note a { color: #f1f5f9; text-decoration: none; }
         .footer-note a:hover { color: white; }
-        .sticky-cta { position: fixed; bottom: 25px; right: 25px; background: #0B5E42; color: white; padding: 0.9rem 2rem; border-radius: 60px; font-weight: 700; box-shadow: 0 15px 30px rgba(0,0,0,0.25); text-decoration: none; display: flex; align-items: center; gap: 8px; z-index: 999; }
+        .sticky-cta { position: fixed; bottom: 25px; right: 25px; background: #0B5E42; color: white; padding: 0.9rem 2rem; border-radius: 60px; font-weight: 700; box-shadow: 0 15px 30px rgba(0,0,0,0.25); text-decoration: none; display: flex; align-items: center; gap: 8px; z-index: 888; }
         .sticky-cta:hover { background: #1e7e5a; color: white; }
-        .alert { padding: 1rem; border-radius: 12px; margin-bottom: 1rem; display: none; }
-        .alert-danger { background: #fee; color: #c33; border: 1px solid #fcc; }
-        .address-lookup { background: #f0f7f4; border-radius: 12px; padding: 1rem; margin: 1rem 0 1.5rem; display: flex; gap: 0.5rem; align-items: flex-end; flex-wrap: wrap; }
-        .address-lookup .form-group { margin-bottom: 0; flex: 2 1 200px; }
-        .address-lookup button { background: #0B5E42; color: white; border: none; border-radius: 40px; padding: 0.9rem 1.8rem; font-weight: 600; cursor: pointer; transition: 0.2s; height: fit-content; }
-        .address-lookup button:hover { background: #1e7e5a; }
-        .address-lookup button:disabled { background: #a0c0b5; cursor: not-allowed; }
         .course-fixed { background: #e9f4ef; padding: 1rem 1.5rem; border-radius: 40px; font-weight: 600; color: #0B5E42; display: inline-block; margin-bottom: 1.5rem; }
-        @media (max-width: 768px) { .booking-form { padding: 1.5rem; } }
+        @media (max-width: 768px) {
+            .booking-form { padding: 1.5rem; }
+            .page-wrapper { padding-top: 80px; }
+        }
+        @media (max-width: 480px) {
+            .page-wrapper { padding-top: 70px; }
+        }
     </style>
 </head>
 <body>
-  <div id="header-container"></div>
-  <script src="header.js"></script>
-    <div class="container">
-        <div class="booking-form">
-            <!-- price badge updated to £79 + VAT -->
-            <div class="price-badge">
-                <i class="fas fa-gbp text-success me-1"></i> £79 Today – Save £20 | Limited Time Offer
+
+    <!-- ✅ Header injected here by common.js -->
+    <div id="header-container"></div>
+
+    <!-- ✅ Page content pushed below fixed header -->
+    <div class="page-wrapper">
+        <div class="container">
+            <div class="booking-form">
+                <div class="price-badge">
+                    <i class="fas fa-tag" style="color:#0B5E42;"></i>
+                    £79 Today – Save £20 | Limited Time Offer
+                </div>
+                <h1 style="color:#0B5E42; margin-bottom:0.5rem;">Book Your CSCS Green Card – Level 1</h1>
+                <p style="color:#4a5568; margin-bottom:2rem;">Enrol on the CSCS Green Card course (Level 1 Award in Health and Safety in a Construction Environment).</p>
+
+                <form id="cscsForm" action="green-course-booking.php" method="POST">
+
+                    <!-- Course Details -->
+                    <h2 class="section-title">Course Details</h2>
+                    <input type="hidden" name="selected_nvq" value="cscs-green-card-level-1">
+                    <div class="course-fixed">
+                        <i class="fas fa-check-circle" style="color:#0B5E42; margin-right:8px;"></i>
+                        CSCS Green Card Level 1 (Award in Health &amp; Safety)
+                    </div>
+
+                    <div class="form-group">
+                        <label>Have you passed the CITB Health, Safety and Environment test within the last 2 years?</label>
+                        <div class="radio-group">
+                            <label class="form-check-inline">
+                                <input type="radio" name="citb_test_completed" value="Yes" required> Yes
+                            </label>
+                            <label class="form-check-inline">
+                                <input type="radio" name="citb_test_completed" value="No" required> No
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Personal Details -->
+                    <h2 class="section-title">Personal Details</h2>
+                    <div class="form-group">
+                        <label for="first_name">First Name *</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name *</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_email">Confirm Email *</label>
+                        <input type="email" class="form-control" id="confirm_email" name="confirm_email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+
+                    <!-- Address Details -->
+                    <h2 class="section-title">Address Details</h2>
+                    <div class="form-group" id="findAddressBtn">
+                        <label for="address_line_1">Address Line 1 *
+                            <span class="manual-link" id="manualAddressTrigger">Enter address manually</span>
+                        </label>
+                        <input type="text" class="form-control" id="address_line_1" name="address_line_1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address_line_2">Address Line 2</label>
+                        <input type="text" class="form-control" id="address_line_2" name="address_line_2">
+                    </div>
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                        <div class="form-group" style="flex:1; min-width:140px;">
+                            <label for="city">City *</label>
+                            <input type="text" class="form-control" id="city" name="city" required>
+                        </div>
+                        <div class="form-group" style="flex:1; min-width:140px;">
+                            <label for="postcode">Postcode *</label>
+                            <input type="text" class="form-control addressNow" id="postcode" name="postcode" required>
+                        </div>
+                    </div>
+
+                    <!-- Live summary -->
+                    <div class="summary-box" id="liveSummary">
+                        <p><strong>Review your details:</strong> they will appear here as you type.</p>
+                    </div>
+
+                    <!-- Terms -->
+                    <div class="form-group" style="margin:2rem 0 1rem;">
+                        <label class="form-check-inline" style="justify-content:flex-start; align-items:flex-start; gap:10px;">
+                            <input type="checkbox" name="accept_terms" value="yes" required style="width:20px;height:20px;margin-top:2px;flex-shrink:0;">
+                            <span>I accept the <a href="terms-conditions.html" target="_blank">Terms and Conditions</a> &amp; <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-check-inline" style="justify-content:flex-start; align-items:flex-start; gap:10px;">
+                            <input type="checkbox" name="opt_out" value="1" style="width:20px;height:20px;margin-top:2px;flex-shrink:0;">
+                            <span>Please tick this box if you do not want to receive revision, support or training course information. You can opt out any time.</span>
+                        </label>
+                    </div>
+
+                    <div style="text-align:center; margin-top:2.5rem;">
+                        <button type="submit" class="btn-primary-custom" id="submitBtn">
+                            <i class="fas fa-lock" style="margin-right:8px;"></i>Submit &amp; Pay Securely
+                        </button>
+                    </div>
+                </form>
             </div>
-            <h1 style="color:#0B5E42; margin-bottom:0.5rem;">Book Your CSCS Green Card – Level 1</h1>
-            <p style="color:#4a5568; margin-bottom:2rem;">Enrol on the CSCS Green Card course (Level 1 Award in Health and Safety in a Construction Environment).</p>
-
-            <!-- FORM NOW SUBMITS TO PHP PROCESSOR -->
-            <form id="cscsForm" action="green-course-booking.php" method="POST">
-                <!-- SECTION: Course Details (simplified, fixed course) -->
-                <h2 class="section-title">Course Details</h2>
-                <!-- Hidden field with fixed course value -->
-                <input type="hidden" name="selected_nvq" value="cscs-green-card-level-1">
-                <div class="course-fixed">
-                    <i class="fas fa-check-circle" style="color:#0B5E42; margin-right:8px;"></i>
-                    CSCS Green Card Level 1 (Award in Health & Safety)
-                </div>
-
-                <div class="form-group">
-                    <label>Have you passed the CITB Health, Safety and Environment test within the last 2 years?</label>
-                    <div class="radio-group">
-                        <label class="form-check-inline">
-                            <input type="radio" name="citb_test_completed" value="Yes" required> Yes
-                        </label>
-                        <label class="form-check-inline">
-                            <input type="radio" name="citb_test_completed" value="No" required> No
-                        </label>
-                    </div>
-                </div>
-
-                <!-- SECTION: Personal Details (unchanged) -->
-                <h2 class="section-title">Personal Details</h2>
-                <div class="form-group">
-                    <label for="first_name">First Name *</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name" required>
-                </div>
-                <div class="form-group">
-                    <label for="last_name">Last Name *</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm_email">Confirm Email *</label>
-                    <input type="email" class="form-control" id="confirm_email" name="confirm_email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone *</label>
-                    <input type="tel" class="form-control" id="phone" name="phone" required>
-                </div>
-
-                <!-- SECTION: Address Details with UK Lookup (unchanged) -->
-                <h2 class="section-title">Address Details</h2>
-
-                <!-- UK Address Lookup Widget (manual fallback) -->
-                <div id="findAddressBtn" class="form-group">
-                    <label for="address_line_1">Address Line 1 *</label>
-                    <span class="manual-link" id="manualAddressTrigger">Enter address manually</span>
-                    <input type="text" class="form-control" id="address_line_1" name="address_line_1" required>
-                </div>
-                <div class="form-group">
-                    <label for="address_line_2">Address Line 2</label>
-                    <input type="text" class="form-control" id="address_line_2" name="address_line_2">
-                </div>
-                <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-                    <div class="form-group" style="flex:1;">
-                        <label for="city">City *</label>
-                        <input type="text" class="form-control" id="city" name="city" required>
-                    </div>
-                    <div class="form-group" style="flex:1;">
-                        <label for="postcode">Postcode *</label>
-                        <!-- Added class="addressNow" for AddressNow autocomplete -->
-                        <input type="text" class="form-control addressNow" id="postcode" name="postcode" required>
-                    </div>
-                </div>
-
-                <!-- live summary box (populated by JS) -->
-                <div class="summary-box" id="liveSummary">
-                    <p><strong>Review your details:</strong> they will appear here as you type.</p>
-                </div>
-
-                <!-- terms & marketing -->
-                <div class="form-group" style="margin:2rem 0 1rem;">
-                    <label class="form-check-inline" style="justify-content:flex-start;">
-                        <input type="checkbox" name="accept_terms" value="yes" required style="width:20px;height:20px;margin-right:10px;">
-                        I accept the <a href="terms-conditions.html" target="_blank">Terms and Conditions</a> & <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label class="form-check-inline" style="justify-content:flex-start;">
-                        <input type="checkbox" name="opt_out" value="1" style="width:20px;height:20px;margin-right:10px;">
-                        Please tick this box if you do not want to receive revision, support or training course information. You can opt out any time.
-                    </label>
-                </div>
-
-                <!-- submit button -->
-                <div style="text-align:center; margin-top:2.5rem;">
-                    <button type="submit" class="btn-primary-custom" id="submitBtn">Submit</button>
-                </div>
-            </form>
         </div>
     </div>
 
-    <!-- sticky CTA (updated link text to match context) -->
-    <a href="https://constructionscert.co.uk/book-course" class="sticky-cta"><i class="fas fa-bolt me-1"></i> Enquire now</a>
+    <!-- Sticky CTA -->
+    <a href="https://constructionscert.co.uk/book-course" class="sticky-cta">
+        <i class="fas fa-bolt"></i> Enquire now
+    </a>
 
-    <!-- AddressNow JavaScript (place near closing body) -->
+    <!-- Footer injected by common.js -->
+    <div id="footer-container"></div>
+
+    <!-- AddressNow -->
     <script src="https://api.addressnow.co.uk/js/addressnow-2.20.min.js?key=gm26-ce18-kr99-hj91"></script>
     <script>
-        addressNow.listen("options", function (options) {
-            options.bar = options.bar || {};
-            options.bar.visible = false;
-        });
+        if (typeof addressNow !== 'undefined') {
+            addressNow.listen("options", function(options) {
+                options.bar = options.bar || {};
+                options.bar.visible = false;
+            });
+        }
     </script>
 
-    <!-- JavaScript for live summary, validation, and manual address lookup (updated for fixed course) -->
+    <!-- Form logic -->
     <script>
-        (function() {
-            // No course list needed – we have a fixed course.
+        (function () {
             const fixedCourseName = "CSCS Green Card Level 1 (Award in Health & Safety)";
 
-            // ---------- Manual UK Address Lookup (fallback using GetAddress.io) ----------
-            const findBtn = document.getElementById('findAddressBtn');
-            const lookupPostcode = document.getElementById('lookup_postcode');
-            const addrLine1 = document.getElementById('address_line_1');
-            const addrLine2 = document.getElementById('address_line_2');
-            const cityField = document.getElementById('city');
-            const postcodeField = document.getElementById('postcode');
+            const form         = document.getElementById('cscsForm');
+            const firstName    = document.getElementById('first_name');
+            const lastName     = document.getElementById('last_name');
+            const emailField   = document.getElementById('email');
+            const confirmEmail = document.getElementById('confirm_email');
+            const phoneField   = document.getElementById('phone');
+            const addrLine1    = document.getElementById('address_line_1');
+            const addrLine2    = document.getElementById('address_line_2');
+            const cityField    = document.getElementById('city');
+            const postcodeField= document.getElementById('postcode');
+            const summaryBox   = document.getElementById('liveSummary');
+            const citbRadios   = document.querySelectorAll('input[name="citb_test_completed"]');
 
-            // IMPORTANT: Replace with your own GetAddress.io API key if needed.
-            // This key is the same as the one used in AddressNow but may have limited usage.
-            const GETADDRESS_API_KEY = 'gm26-ce18-kr99-hj91';
-
-            findBtn.addEventListener('click', function() {
-                const pc = lookupPostcode.value.trim().replace(/\s/g, '');
-                if (!pc) {
-                    alert('Please enter a postcode.');
-                    return;
-                }
-
-                // Disable button while fetching
-                findBtn.disabled = true;
-                findBtn.textContent = 'Searching...';
-
-                // Call GetAddress.io (free tier: limited requests)
-                fetch(`https://api.getaddress.io/find/${pc}?api-key=${GETADDRESS_API_KEY}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            if (response.status === 401) throw new Error('Invalid API key or no key provided');
-                            if (response.status === 404) throw new Error('Postcode not found');
-                            throw new Error('Address lookup failed');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.addresses && data.addresses.length > 0) {
-                            const first = data.addresses[0];
-                            addrLine1.value = first.address;    // full street address
-                            cityField.value = first.town || first.city || ''; 
-                            postcodeField.value = pc.toUpperCase();
-                            addrLine2.value = '';
-                            updateSummary();
-                        } else {
-                            alert('No addresses found for this postcode.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error(error);
-                        alert('Address lookup failed. Please check the postcode or try manual entry.');
-                    })
-                    .finally(() => {
-                        findBtn.disabled = false;
-                        findBtn.textContent = 'Find Address';
-                    });
-            });
-
-            // ---------- Form fields for live summary and validation ----------
-            const form = document.getElementById('cscsForm');
-            const fields = {
-                first_name: document.getElementById('first_name'),
-                last_name: document.getElementById('last_name'),
-                email: document.getElementById('email'),
-                confirm_email: document.getElementById('confirm_email'),
-                phone: document.getElementById('phone'),
-                address_line_1: document.getElementById('address_line_1'),
-                city: document.getElementById('city'),
-                postcode: document.getElementById('postcode'),
-                citb_test: document.querySelectorAll('input[name="citb_test_completed"]')
-                // no nvq select field needed
-            };
-            const summaryBox = document.getElementById('liveSummary');
-
-            // Email match validation
+            // ---- Email validation ----
             function validateEmails() {
-                if (fields.email.value && fields.confirm_email.value && fields.email.value !== fields.confirm_email.value) {
-                    fields.email.style.borderColor = '#dc3545';
-                    fields.confirm_email.style.borderColor = '#dc3545';
-                    return false;
-                } else {
-                    fields.email.style.borderColor = '';
-                    fields.confirm_email.style.borderColor = '';
-                    return true;
-                }
+                const match = !emailField.value || !confirmEmail.value || emailField.value === confirmEmail.value;
+                emailField.style.borderColor    = match ? '' : '#dc3545';
+                confirmEmail.style.borderColor  = match ? '' : '#dc3545';
+                return match;
             }
 
-            // Simple UK postcode hint (not exhaustive)
+            // ---- Postcode validation ----
             function validatePostcode() {
-                const pc = fields.postcode.value.trim();
-                if (pc && !/^[A-Z]{1,2}[0-9][A-Z0-9]? ?[0-9][A-Z]{2}$/i.test(pc)) {
-                    fields.postcode.style.borderColor = '#dc3545';
-                    return false;
-                } else {
-                    fields.postcode.style.borderColor = '';
-                    return true;
-                }
+                const pc = postcodeField.value.trim();
+                const valid = !pc || /^[A-Z]{1,2}[0-9][A-Z0-9]? ?[0-9][A-Z]{2}$/i.test(pc);
+                postcodeField.style.borderColor = valid ? '' : '#dc3545';
+                return valid;
             }
 
-            // Update summary box
+            // ---- Live summary ----
             function updateSummary() {
                 let citb = '';
-                fields.citb_test.forEach(r => { if (r.checked) citb = r.value; });
-                const html = `
-                    <p><strong>Name:</strong> ${fields.first_name.value || '—'} ${fields.last_name.value || '—'}</p>
-                    <p><strong>Email:</strong> ${fields.email.value || '—'}</p>
-                    <p><strong>Phone:</strong> ${fields.phone.value || '—'}</p>
-                    <p><strong>Address:</strong> ${fields.address_line_1.value || '—'}, ${fields.city.value || '—'} ${fields.postcode.value || '—'}</p>
+                citbRadios.forEach(r => { if (r.checked) citb = r.value; });
+                summaryBox.innerHTML = `
+                    <p><strong>Name:</strong> ${firstName.value || '—'} ${lastName.value || '—'}</p>
+                    <p><strong>Email:</strong> ${emailField.value || '—'}</p>
+                    <p><strong>Phone:</strong> ${phoneField.value || '—'}</p>
+                    <p><strong>Address:</strong> ${addrLine1.value || '—'}, ${cityField.value || '—'} ${postcodeField.value || '—'}</p>
                     <p><strong>CITB Test within 2 years:</strong> ${citb || '—'}</p>
                     <p><strong>Selected Course:</strong> ${fixedCourseName}</p>
                 `;
-                summaryBox.innerHTML = html;
             }
 
-            // Attach listeners
-            const inputs = form.querySelectorAll('input, select');
-            inputs.forEach(el => el.addEventListener('input', function() {
-                validateEmails();
-                validatePostcode();
-                updateSummary();
-            }));
-            // Also update on radio change
-            fields.citb_test.forEach(r => r.addEventListener('change', updateSummary));
+            // ---- Listeners ----
+            form.querySelectorAll('input, select').forEach(el => {
+                el.addEventListener('input', () => { validateEmails(); validatePostcode(); updateSummary(); });
+            });
+            citbRadios.forEach(r => r.addEventListener('change', updateSummary));
 
-            // Manual address link
-            document.getElementById('manualAddressTrigger').addEventListener('click', function(e) {
+            // ---- Manual address trigger ----
+            document.getElementById('manualAddressTrigger').addEventListener('click', function (e) {
                 e.preventDefault();
                 addrLine1.value = '';
                 addrLine2.value = '';
                 cityField.value = '';
                 postcodeField.value = '';
-                lookupPostcode.value = '';
                 addrLine1.focus();
                 updateSummary();
             });
 
-            // Final validation before submit
-            form.addEventListener('submit', function(e) {
-                let isValid = true;
-                const required = form.querySelectorAll('[required]');
-                required.forEach(field => {
+            // ---- Submit validation ----
+            form.addEventListener('submit', function (e) {
+                let valid = true;
+
+                form.querySelectorAll('[required]').forEach(field => {
                     if (!field.value.trim()) {
                         field.style.borderColor = '#dc3545';
-                        isValid = false;
+                        valid = false;
                     } else {
                         field.style.borderColor = '';
                     }
                 });
-                if (!validateEmails()) isValid = false;
-                if (!validatePostcode()) isValid = false;
+
+                if (!validateEmails()) valid = false;
+                if (!validatePostcode()) valid = false;
+
                 const terms = document.querySelector('input[name="accept_terms"]');
-                if (!terms || !terms.checked) {
+                if (!terms.checked) {
                     alert('You must accept the Terms and Conditions.');
-                    isValid = false;
+                    valid = false;
                 }
-                if (!isValid) {
+
+                if (!valid) {
                     e.preventDefault();
                     alert('Please fill in all required fields correctly.');
-                } else {
-                    // Optionally disable button to prevent double submission
-                    document.getElementById('submitBtn').disabled = true;
-                    document.getElementById('submitBtn').textContent = 'Submitting...';
+                    return;
                 }
+
+                const btn = document.getElementById('submitBtn');
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right:8px;"></i>Submitting…';
             });
 
-            // Initial summary
             updateSummary();
         })();
     </script>
 </body>
-</html>    
+</html>
