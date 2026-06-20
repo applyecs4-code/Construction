@@ -1,4 +1,4 @@
-        // ===================== COMMON.JS =====================
+// ===================== COMMON.JS =====================
 
 // ✅ Load Header & Footer automatically on every page
 document.addEventListener("DOMContentLoaded", async () => {
@@ -13,10 +13,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     const headerHTML = await headerRes.text();
     headerContainer.innerHTML = headerHTML;
 
-    // Initialize header scripts immediately
-    initHeaderScripts();
+    // Initialize header scripts immediately after inject
+    initScrollEffect();
+    initMobileMenu();
+    initAccordionDropdowns();
+    setActiveMenuItem();
+    initKeyboardNavigation();
 
-    // --- Load Footer (after header loaded) ---
+    // --- Load Footer ---
     const footerContainer = document.createElement("div");
     footerContainer.id = "footer-container";
     document.body.append(footerContainer);
@@ -26,367 +30,150 @@ document.addEventListener("DOMContentLoaded", async () => {
     const footerHTML = await footerRes.text();
     footerContainer.innerHTML = footerHTML;
 
-    // Initialize all other scripts with small delay to ensure DOM is ready
-    setTimeout(() => {
-      initScrollEffect();
-      initMobileMenu();
-      initAccordionDropdowns();
-      initReviewSlider();
-      initFAQAccordion();
-      setActiveMenuItem();
-      initKeyboardNavigation();
-    }, 100);
+    // Page-specific scripts (may not exist on all pages - safe to init)
+    initReviewSlider();
+    initFAQAccordion();
 
   } catch (e) {
     console.error("❌ Header/Footer load failed:", e);
   }
 });
 
-// ===================== HEADER FUNCTIONALITY =====================
-
-function initHeaderScripts() {
-  // ✅ Dropdown toggle - केवल desktop के लिए
-  window.toggleSubMenu = function (element) {
-    if (window.innerWidth > 992) {
-      const menu = element.parentElement;
-      const allMenus = document.querySelectorAll(".menu");
-      allMenus.forEach((m) => {
-        if (m !== menu) m.classList.remove("active");
-      });
-      menu.classList.toggle("active");
-    }
-  };
-
-  // ✅ Close dropdowns when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".menu")) {
-      document
-        .querySelectorAll(".menu")
-        .forEach((menu) => menu.classList.remove("active"));
-    }
-  });
-}
-
-// ===================== MOBILE MENU (SINGLE FUNCTION) =====================
-
-function initMobileMenu() {
-  const hamburger = document.querySelector(".hamburger");
-  const navMenu = document.querySelector(".nav-menu");
-  const mobileOverlay = document.querySelector(".mobile-overlay");
-
-  if (!hamburger || !navMenu) {
-    console.log("Mobile menu elements not found");
-    return;
-  }
-
-  // Create overlay if it doesn't exist
-  if (!mobileOverlay) {
-    const overlay = document.createElement("div");
-    overlay.className = "mobile-overlay";
-    document.body.appendChild(overlay);
-  }
-
-  const overlay = document.querySelector(".mobile-overlay");
-
-  // ✅ Global function to open/close mobile menu
-  window.toggleMobileMenu = function (forceClose = false) {
-    const isActive = navMenu.classList.contains("active");
-
-    if (forceClose) {
-      // Force close
-      hamburger.classList.remove("active");
-      navMenu.classList.remove("active");
-      overlay.classList.remove("active");
-      hamburger.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
-    } else {
-      // Toggle
-      hamburger.classList.toggle("active");
-      navMenu.classList.toggle("active");
-      overlay.classList.toggle("active");
-      const isExpanded = navMenu.classList.contains("active");
-      hamburger.setAttribute("aria-expanded", isExpanded);
-      document.body.style.overflow = isExpanded ? "hidden" : "";
-    }
-  };
-
-  // ✅ Hamburger click
-  hamburger.addEventListener("click", (e) => {
-    e.stopPropagation();
-    window.toggleMobileMenu();
-  });
-
-  // ✅ Overlay click
-  overlay.addEventListener("click", () => {
-    window.toggleMobileMenu(true);
-  });
-
-  // ✅ Close menu when clicking on nav links
-  document.querySelectorAll(".nav-menu a").forEach((link) => {
-    link.addEventListener("click", () => {
-      window.toggleMobileMenu(true);
-    });
-  });
-
-  console.log("Mobile menu initialized");
-}
-
 // ===================== SCROLL EFFECT =====================
 
 function initScrollEffect() {
-  const header = document.querySelector("header");
+  const header = document.querySelector("header, .header");
   if (!header) return;
 
-  window.addEventListener("scroll", function () {
+  function checkScroll() {
     if (window.scrollY > 10) {
       header.classList.add("scrolled");
     } else {
       header.classList.remove("scrolled");
     }
-  });
-
-  // Initialize scroll state
-  if (window.scrollY > 10) {
-    header.classList.add("scrolled");
   }
+
+  window.addEventListener("scroll", checkScroll, { passive: true });
+  checkScroll(); // run on load
 }
 
-// ===================== ACCORDION DROPDOWNS =====================
+// ===================== MOBILE MENU =====================
+
+function initMobileMenu() {
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+
+  if (!hamburger || !navMenu) {
+    console.warn("Mobile menu elements not found");
+    return;
+  }
+
+  // Create overlay if missing
+  let overlay = document.querySelector(".mobile-overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.className = "mobile-overlay";
+    document.body.appendChild(overlay);
+  }
+
+  function openMenu() {
+    hamburger.classList.add("active");
+    navMenu.classList.add("active");
+    overlay.classList.add("active");
+    hamburger.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+    overlay.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    // Close all open dropdowns
+    document.querySelectorAll(".has-dropdown.active, .course-dropdown.active").forEach(el => {
+      el.classList.remove("active");
+    });
+  }
+
+  window.closeMobileMenu = closeMenu;
+
+  hamburger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navMenu.classList.contains("active") ? closeMenu() : openMenu();
+  });
+
+  overlay.addEventListener("click", closeMenu);
+
+  // ESC key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+
+  // Close menu on resize to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 992) closeMenu();
+  });
+
+  console.log("✅ Mobile menu initialized");
+}
+
+// ===================== ACCORDION DROPDOWNS (MOBILE) =====================
 
 function initAccordionDropdowns() {
-  // Mobile dropdown toggle
-  const dropdowns = document.querySelectorAll(".dropdown");
+  // Event delegation - works even with dynamically injected headers
+  document.addEventListener("click", (e) => {
+    // Only on mobile
+    if (window.innerWidth > 992) return;
 
-  dropdowns.forEach((dropdown) => {
-    const toggle = dropdown.querySelector(".dropdown-toggle");
+    // Check if click is on a dropdown parent link (has-dropdown or course-dropdown)
+    const toggleLink = e.target.closest(".has-dropdown > a, .course-dropdown > a");
+    if (!toggleLink) return;
 
-    if (toggle) {
-      toggle.addEventListener("click", (e) => {
-        if (window.innerWidth <= 992) {
-          e.preventDefault();
-          e.stopPropagation();
+    e.preventDefault();
+    e.stopPropagation();
 
-          // Close all other dropdowns
-          dropdowns.forEach((d) => {
-            if (d !== dropdown) {
-              d.classList.remove("active");
-              const otherToggle = d.querySelector(".dropdown-toggle");
-              if (otherToggle) {
-                otherToggle.setAttribute("aria-expanded", "false");
-              }
-            }
-          });
+    const parent = toggleLink.closest(".has-dropdown, .course-dropdown");
+    if (!parent) return;
 
-          // Toggle current dropdown
-          dropdown.classList.toggle("active");
-          const isExpanded = dropdown.classList.contains("active");
-          toggle.setAttribute("aria-expanded", isExpanded);
-        }
-      });
-    }
-  });
+    const isActive = parent.classList.contains("active");
 
-  // Accordion functionality
-  const accordionHeaders = document.querySelectorAll(".accordion-header");
-  accordionHeaders.forEach((button) => {
-    button.addEventListener("click", () => {
-      const content = button.nextElementSibling;
-      const isMobile = window.innerWidth <= 992;
-
-      if (isMobile) {
-        // Mobile behavior - toggle accordion
-        const isActive = button.classList.contains("active");
-
-        // Close all other accordions
-        document.querySelectorAll(".accordion-header").forEach((h) => {
-          if (h !== button) {
-            h.classList.remove("active");
-            const otherContent = h.nextElementSibling;
-            if (otherContent) {
-              otherContent.style.display = "none";
-              otherContent.classList.remove("active");
-            }
-          }
-        });
-
-        // Toggle current accordion
-        button.classList.toggle("active");
-        if (content) {
-          content.classList.toggle("active");
-          content.style.display = isActive ? "none" : "block";
-        }
-      }
+    // Close all dropdowns
+    document.querySelectorAll(".has-dropdown.active, .course-dropdown.active").forEach(el => {
+      el.classList.remove("active");
     });
-  });
 
-  // Initialize mobile accordion state
-  if (window.innerWidth <= 992) {
-    document.querySelectorAll(".accordion-content").forEach((content) => {
-      if (!content.classList.contains("active")) {
-        content.style.display = "none";
-      }
-    });
-  }
-
-  // Reset on window resize
-  let resizeTimeout;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      const isDesktop = window.innerWidth > 992;
-
-      if (isDesktop) {
-        // Reset dropdowns and accordions for desktop
-        dropdowns.forEach((dropdown) => {
-          dropdown.classList.remove("active");
-          const toggle = dropdown.querySelector(".dropdown-toggle");
-          if (toggle) {
-            toggle.setAttribute("aria-expanded", "false");
-          }
-        });
-
-        document.querySelectorAll(".accordion-content").forEach((content) => {
-          content.style.display = "";
-          content.classList.remove("active");
-        });
-
-        document.querySelectorAll(".accordion-header").forEach((button) => {
-          button.classList.remove("active");
-        });
-      } else {
-        // On mobile, ensure accordion contents are hidden by default
-        document.querySelectorAll(".accordion-content").forEach((content) => {
-          if (!content.classList.contains("active")) {
-            content.style.display = "none";
-          }
-        });
-      }
-    }, 100);
-  });
-}
-
-// ===================== HELPER FUNCTIONS =====================
-
-function closeAllMenus() {
-  // Close mobile menu
-  const navMenu = document.querySelector(".nav-menu");
-  const hamburger = document.querySelector(".hamburger");
-  const mobileOverlay = document.querySelector(".mobile-overlay");
-
-  if (navMenu) navMenu.classList.remove("active");
-  if (hamburger) hamburger.classList.remove("active");
-  if (mobileOverlay) mobileOverlay.classList.remove("active");
-
-  // Close dropdowns
-  document.querySelectorAll(".dropdown").forEach((dropdown) => {
-    dropdown.classList.remove("active");
-    const toggle = dropdown.querySelector(".dropdown-toggle");
-    if (toggle) {
-      toggle.setAttribute("aria-expanded", "false");
+    // Toggle current (open if was closed)
+    if (!isActive) {
+      parent.classList.add("active");
     }
   });
 
-  // Close desktop menus
-  document
-    .querySelectorAll(".menu")
-    .forEach((menu) => menu.classList.remove("active"));
+  // Simple nav links (non-dropdown) - close mobile menu on click
+  document.addEventListener("click", (e) => {
+    if (window.innerWidth > 992) return;
 
-  document.body.style.overflow = "";
-}
+    const link = e.target.closest(".nav-menu a");
+    if (!link) return;
 
-// ===================== REVIEW SLIDER =====================
+    // Skip if it's a dropdown parent toggle
+    if (link.closest(".has-dropdown") && link === link.closest(".has-dropdown").querySelector(":scope > a")) return;
+    if (link.closest(".course-dropdown") && link === link.closest(".course-dropdown").querySelector(":scope > a")) return;
 
-function initReviewSlider() {
-  const wrapper = document.getElementById("reviewWrapper");
-  const dots = document.querySelectorAll(".dot");
-  const totalSlides = dots.length;
-
-  if (!wrapper || totalSlides === 0) {
-    console.log("Review slider elements not found");
-    return;
-  }
-
-  let currentSlide = 0;
-
-  function moveToSlide(slideIndex) {
-    currentSlide = slideIndex;
-    wrapper.style.transform = `translateX(-${slideIndex * 100}%)`;
-
-    dots.forEach((dot) => dot.classList.remove("active"));
-    if (dots[slideIndex]) {
-      dots[slideIndex].classList.add("active");
-    }
-  }
-
-  // Auto slide every 5 sec
-  const slideInterval = setInterval(() => {
-    if (totalSlides > 0) {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      moveToSlide(currentSlide);
-    }
-  }, 5000);
-
-  // Initialize dots click events
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => moveToSlide(index));
+    // It's a real destination link - close menu
+    setTimeout(() => {
+      if (window.closeMobileMenu) window.closeMobileMenu();
+    }, 120);
   });
 
-  // Clear interval when page is hidden
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-      clearInterval(slideInterval);
-    }
-  });
-}
-
-// ===================== FAQ ACCORDION =====================
-
-function initFAQAccordion() {
-  const faqItems = document.querySelectorAll(".faq-item");
-
-  if (faqItems.length === 0) {
-    console.log("FAQ items not found");
-    return;
-  }
-
-  // 🔹 Start: sab FAQ band rakho
-  faqItems.forEach((item) => {
-    item.classList.remove("active");
-    const answer = item.querySelector(".faq-answer, .faq-content");
-    if (answer) {
-      answer.style.display = "none";
-    }
-  });
-
-  // 🔹 Click par open/close (multiple open allow)
-  faqItems.forEach((item) => {
-    const question = item.querySelector(".faq-question");
-    const answer = item.querySelector(".faq-answer, .faq-content");
-    if (!question || !answer) return;
-
-    question.addEventListener("click", () => {
-      const isActive = item.classList.contains("active");
-
-      if (isActive) {
-        // Ab band karo
-        item.classList.remove("active");
-        answer.style.display = "none";
-      } else {
-        // Ab open karo
-        item.classList.add("active");
-        answer.style.display = "block";
-      }
-    });
-  });
+  console.log("✅ Accordion dropdowns initialized");
 }
 
 // ===================== ACTIVE PAGE HIGHLIGHT =====================
 
 function setActiveMenuItem() {
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
-  const menuItems = document.querySelectorAll(".nav-menu a");
-
-  menuItems.forEach((item) => {
+  document.querySelectorAll(".nav-menu a").forEach((item) => {
     const href = item.getAttribute("href");
     if (href === currentPage || (currentPage === "" && href === "index.html")) {
       item.classList.add("active");
@@ -399,36 +186,75 @@ function setActiveMenuItem() {
 // ===================== KEYBOARD NAVIGATION =====================
 
 function initKeyboardNavigation() {
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeAllMenus();
-    }
-  });
-
-  // Close dropdowns when clicking outside
+  // Close desktop dropdowns when clicking outside
   document.addEventListener("click", (e) => {
-    const dropdowns = document.querySelectorAll(".dropdown");
-    if (!e.target.closest(".dropdown") && !e.target.closest(".hamburger")) {
-      dropdowns.forEach((dropdown) => {
-        dropdown.classList.remove("active");
-        const toggle = dropdown.querySelector(".dropdown-toggle");
-        if (toggle) {
-          toggle.setAttribute("aria-expanded", "false");
-        }
+    if (window.innerWidth <= 992) return;
+    if (!e.target.closest(".has-dropdown") && !e.target.closest(".course-dropdown")) {
+      document.querySelectorAll(".has-dropdown.active, .course-dropdown.active").forEach(el => {
+        el.classList.remove("active");
       });
     }
   });
 }
 
+// ===================== REVIEW SLIDER =====================
+
+function initReviewSlider() {
+  const wrapper = document.getElementById("reviewWrapper");
+  const dots = document.querySelectorAll(".dot");
+  const totalSlides = dots.length;
+
+  if (!wrapper || totalSlides === 0) return;
+
+  let currentSlide = 0;
+
+  function moveToSlide(index) {
+    currentSlide = index;
+    wrapper.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot) => dot.classList.remove("active"));
+    if (dots[index]) dots[index].classList.add("active");
+  }
+
+  const slideInterval = setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    moveToSlide(currentSlide);
+  }, 5000);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => moveToSlide(index));
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) clearInterval(slideInterval);
+  });
+}
+
+// ===================== FAQ ACCORDION =====================
+
+function initFAQAccordion() {
+  const faqItems = document.querySelectorAll(".faq-item");
+  if (faqItems.length === 0) return;
+
+  faqItems.forEach((item) => {
+    item.classList.remove("active");
+    const answer = item.querySelector(".faq-answer, .faq-content");
+    if (answer) answer.style.display = "none";
+  });
+
+  faqItems.forEach((item) => {
+    const question = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer, .faq-content");
+    if (!question || !answer) return;
+
+    question.addEventListener("click", () => {
+      const isActive = item.classList.contains("active");
+      item.classList.toggle("active");
+      answer.style.display = isActive ? "none" : "block";
+    });
+  });
+}
+
 // ===================== ERROR HANDLING =====================
 
-// Global error handler
-window.addEventListener("error", function (e) {
-  console.error("Global error:", e.error);
-});
-
-// Promise rejection handler
-window.addEventListener("unhandledrejection", function (e) {
-  console.error("Unhandled promise rejection:", e.reason);
-});
-    
+window.addEventListener("error", (e) => console.error("Global error:", e.error));
+window.addEventListener("unhandledrejection", (e) => console.error("Unhandled rejection:", e.reason));
